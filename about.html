@@ -272,10 +272,10 @@ button{appearance:none;-webkit-appearance:none;-moz-appearance:none;font-family:
 .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-toggle.open span:nth-child(2){opacity:0}
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.nav-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999}
+.nav-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.25);z-index:900}
 .nav-backdrop.show{display:block}
 @media (max-width: 860px){
-  .nav{position:relative}
+  .nav{position:relative;z-index:1001}
   .nav-toggle{display:flex}
   .nl{
     display:flex !important;flex-direction:column;align-items:flex-start;gap:0;
