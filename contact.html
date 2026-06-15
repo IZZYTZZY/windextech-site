@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services | WindexTech &mdash; CRM, AI Automation &amp; RevOps</title>
-<meta name="description" content="CRM implementation across HubSpot, Salesforce, Pipedrive and Zoho. AI automation with a six-agent revenue system. RevOps strategy. Honest, scoped-to-fit pricing.">
+<title>Contact | WindexTech &mdash; CRM &amp; AI Automation Consultancy</title>
+<meta name="description" content="Get in touch with WindexTech about CRM implementation, AI automation, RevOps, or platform migrations. We respond to all enquiries within one business day.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.35.0/tabler-icons.min.css">
 <style>
 /* ============================================
@@ -50,8 +50,8 @@ button{appearance:none;-webkit-appearance:none;-moz-appearance:none;font-family:
 .hdiv{border:none;border-top:0.5px solid var(--br)}
 .bp{background-color:#00C6A2!important;color:#0B1628!important;font-size:12px;font-weight:500;padding:9px 18px;border-radius:6px;border:none;display:inline-block}
 .bp:hover{background-color:#00a688!important}
-.bg{background-color:transparent!important;color:#ffffff!important;font-size:12px;padding:9px 18px;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);display:inline-block;transition:border-color .2s ease,box-shadow .2s ease,background-color .2s ease}
-.bg:hover{border-color:var(--cy)!important;color:#fff!important;background-color:rgba(0,198,162,0.12)!important;box-shadow:0 0 16px rgba(0,198,162,0.45)}
+.bg{background-color:transparent!important;color:#ffffff!important;font-size:12px;padding:9px 18px;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);display:inline-block}
+.bg:hover{border-color:rgba(255,255,255,0.4)}
 .sec{padding:2.5rem 2rem;max-width:1040px;margin:0 auto}
 .h2{font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-.4px;line-height:1.2;margin-bottom:.55rem;color:#fff!important}
 .sub{font-size:13px;color:var(--mu)!important;line-height:1.8;margin-bottom:1.5rem}
@@ -137,8 +137,7 @@ button{appearance:none;-webkit-appearance:none;-moz-appearance:none;font-family:
 
 /* ---------- pricing ---------- */
 .price-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
-.price-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1.25rem;color:#fff;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
-.price-c:hover{transform:translateY(-4px);border-color:rgba(0,198,162,0.5);box-shadow:0 8px 30px rgba(0,198,162,0.12)}
+.price-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1.25rem;color:#fff}
 .price-c.feat{border-color:rgba(0,198,162,0.4);background:rgba(0,198,162,0.04)}
 .pbadge{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;background:rgba(0,198,162,0.15);color:var(--cy)!important;border-radius:4px;margin-bottom:.65rem}
 .ptier{font-size:14px;font-weight:500;margin-bottom:.3rem;color:#fff!important}
@@ -305,291 +304,118 @@ button{appearance:none;-webkit-appearance:none;-moz-appearance:none;font-family:
   <a class="logo" href="index.html">Windex<span>Tech</span></a>
   <div class="nl">
     <a href="index.html">Home</a>
-    <a href="services.html" class="active">Services</a>
+    <a href="services.html">Services</a>
     <a href="case-studies.html">Case studies</a>
     <a href="ai-readiness-audit.html">AI Readiness Audit</a>
-    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="active">Contact</a>
     <a href="about.html">About us</a>
   </div>
   <a class="nbtn" href="contact.html">Book a call</a>
 </nav>
 
-<div class="sec">
-  <p class="ey">Services</p>
-  <h2 class="h2" style="font-size:clamp(22px,3vw,38px)">CRM, AI automation &amp;<br><em style="color:var(--cy);font-style:normal">RevOps &mdash; all in one place</em></h2>
-  <p class="sub" style="max-width:540px">From platform selection and CRM implementation through to AI agent builds and revenue operations strategy. Scroll through or jump to the section you need.</p>
-  <div style="display:flex;gap:9px;flex-wrap:wrap">
-    <a class="bp" href="ai-readiness-audit.html">Get your free AI readiness report &#8599;</a>
-    <a class="bg" href="case-studies.html">See case studies &rarr;</a>
+<div class="contact-g">
+  <div class="cform">
+    <h2>Get in touch</h2>
+    <p>Tell us a bit about your business and what you're looking to do &mdash; CRM implementation, AI automation, RevOps, a migration, or something else entirely. We respond to every enquiry within one business day.</p>
+    <!-- ============================================================
+         ZOHO WEB-TO-LEAD FORM - CONNECTED (Leads module, .eu data center)
+         Submissions create a Lead in Zoho CRM ("Website Prospect" webform).
+         Required by Zoho: Last Name, Company, Email.
+         The two dropdowns (interest / current CRM) are merged into the
+         Description field via JS at submit time.
+         ============================================================ -->
+    <form id="contact-form" action="https://crm.zoho.eu/crm/WebToLeadForm" method="POST" accept-charset="UTF-8">
+      <!-- Zoho required hidden fields - replace placeholder values -->
+      <input type="hidden" name="xnQsjsdp" value="2ee3a44e0d0f5bca3cb9165f271abe2c3a26abbf09130c02cc2801b3b8164b93">
+      <input type="hidden" name="zc_gad" value="">
+      <input type="hidden" name="xmIwtLD" value="13f014fb14867dc6e3d492f9e3bda6ac09366287250cfa1ba8369c31ca89fdad809ea1e9ab9cd110239ef3f9b3a7bb51">
+      <input type="hidden" name="actionType" value="TGVhZHM=">
+      <input type="hidden" name="returnURL" value="https://windextech.co.uk/contact.html?sent=1">
+
+      <div class="fr"><label for="name">Full name</label><input type="text" id="name" name="Last Name" placeholder="Your name" required></div>
+      <div class="fr"><label for="email">Work email</label><input type="email" id="email" name="Email" placeholder="you@company.com" required></div>
+      <div class="fr"><label for="company">Company</label><input type="text" id="company" name="Company" placeholder="Company name" required></div>
+      <div class="fr">
+        <label for="interest">What are you looking to do?</label>
+        <select id="interest">
+          <option value="">Select an option...</option>
+          <option>CRM implementation</option>
+          <option>AI automation</option>
+          <option>RevOps strategy</option>
+          <option>CRM migration</option>
+          <option>Ongoing support / retainer</option>
+          <option>AI readiness audit</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="fr">
+        <label for="crm">Current CRM (if any)</label>
+        <select id="crm">
+          <option value="">Select platform...</option>
+          <option>HubSpot</option>
+          <option>Salesforce</option>
+          <option>Pipedrive</option>
+          <option>Zoho CRM</option>
+          <option>Other</option>
+          <option>No CRM yet</option>
+        </select>
+      </div>
+      <div class="fr"><label for="message">Tell us about your project</label><textarea id="message" name="Description" placeholder="A few lines about your current setup and what you're trying to achieve..."></textarea></div>
+      <button class="bp" type="submit" style="width:100%;padding:11px">Send message &#8599;</button>
+    </form>
   </div>
-</div>
+  <div>
+    <h3 style="font-size:clamp(18px,2.5vw,26px);font-weight:500;letter-spacing:-.3px;margin-bottom:.5rem;padding-top:.5rem;color:#fff">Let's talk about<br>your CRM.</h3>
+    <p style="font-size:13px;color:var(--mu);line-height:1.75;margin-bottom:1.25rem">We work with businesses at every stage &mdash; first CRM, complex Salesforce CPQ, platform migrations, or layering AI on top of what you already have.</p>
+    <div class="ci-item"><div class="ci-icon" aria-hidden="true"><i class="ti ti-clock"></i></div><div><h4>Response time</h4><p>We respond to all enquiries within one business day.</p></div></div>
+    <div class="ci-item"><div class="ci-icon" aria-hidden="true"><i class="ti ti-file-description"></i></div><div><h4>Honest scoping</h4><p>Every project quoted against real scope &mdash; you'll always know what's included before work starts.</p></div></div>
+    <div class="ci-item"><div class="ci-icon" aria-hidden="true"><i class="ti ti-search"></i></div><div><h4>Not sure where to start?</h4><p>Get a free AI readiness report for your HubSpot portal &mdash; scored across 10 dimensions, with findings and a plan. <a href="ai-readiness-audit.html" style="color:var(--cy)">Learn more &rarr;</a></p></div></div>
 
-<!-- ANCHOR NAV -->
-<div class="svc-anav">
-  <div class="svc-anav-in">
-    <a class="stab" href="#svc-crm">CRM implementation</a>
-    <a class="stab" href="#svc-ai">AI automation</a>
-    <a class="stab" href="#svc-revops">RevOps strategy</a>
-    <a class="stab" href="#svc-platforms">Platforms</a>
-    <a class="stab" href="#svc-pricing">Pricing</a>
-  </div>
-</div>
-
-<!-- ============ CRM IMPLEMENTATION ============ -->
-<div id="svc-crm" style="border-top:0.5px solid var(--br)">
-  <div class="svc-section">
-    <p class="ey">01 &mdash; CRM implementation</p>
-    <div class="svc-header">
-      <div>
-        <h2 class="h2">CRM implementation</h2>
-        <p class="sub">Most CRM projects fail at configuration &mdash; wrong pipeline structure, unmapped fields, automations that don't match how your team actually works. We fix this by starting with deep process discovery before touching a single setting.</p>
-        <a class="bp" href="contact.html">Start a conversation &#8599;</a>
-      </div>
-      <div>
-        <p style="font-size:11px;font-weight:500;color:var(--mu);margin-bottom:.65rem;letter-spacing:.5px">What's always included</p>
-        <div class="check-list">
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Written CRM strategy document before build starts</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Pipeline and stage architecture design</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Custom properties, workflows, and dashboards</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Email and calendar integration</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Team training with recorded walkthroughs</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Handover documentation and go-live support</div>
-        </div>
-      </div>
-    </div>
-    <div class="g3">
-      <div class="card"><div style="font-size:18px;color:var(--cy);margin-bottom:.6rem" aria-hidden="true"><i class="ti ti-target"></i></div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">HubSpot</h3><p style="font-size:12px;line-height:1.6">Sales Hub, Marketing Hub, and Service Hub. Inbound-led businesses, marketing-sales alignment, and ease of adoption.</p></div>
-      <div class="card"><div style="font-size:18px;color:var(--cy);margin-bottom:.6rem" aria-hidden="true"><i class="ti ti-cloud"></i></div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Salesforce</h3><p style="font-size:12px;line-height:1.6">Sales Cloud, Service Cloud, CPQ, and Litify. Complex data models, enterprise integrations, and industry-specific builds.</p></div>
-      <div class="card"><div style="font-size:18px;color:var(--cy);margin-bottom:.6rem" aria-hidden="true"><i class="ti ti-chart-arrows-vertical"></i></div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Pipedrive</h3><p style="font-size:12px;line-height:1.6">Sales-first CRM for teams that want fast deployment, visual pipelines, and high rep adoption from week one.</p></div>
-      <div class="card"><div style="font-size:18px;color:var(--cy);margin-bottom:.6rem" aria-hidden="true"><i class="ti ti-adjustments-horizontal"></i></div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Zoho CRM</h3><p style="font-size:12px;line-height:1.6">Flexible and cost-effective. Ideal for businesses needing deep customisation without the Salesforce price tag.</p></div>
-      <div class="card"><div style="font-size:18px;color:var(--cy);margin-bottom:.6rem" aria-hidden="true"><i class="ti ti-arrow-right-circle"></i></div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">CRM migrations</h3><p style="font-size:12px;line-height:1.6">Full platform switches &mdash; Salesforce to HubSpot and any direction. 50,000+ records, integrations, and complete process rebuild.</p></div>
-      <div class="card"><div style="font-size:18px;color:var(--cy);margin-bottom:.6rem" aria-hidden="true"><i class="ti ti-scale"></i></div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Legal CRM &amp; Litify</h3><p style="font-size:12px;line-height:1.6">Litify on Salesforce for law firms &mdash; matter management, client intake, eBilling, fee-earner workflows, GDPR-compliant configuration.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ AI AUTOMATION ============ -->
-<div id="svc-ai" style="border-top:0.5px solid var(--br);background:rgba(0,198,162,0.02)">
-  <div class="svc-section">
-    <p class="ey">02 &mdash; AI automation</p>
-    <div class="svc-header">
-      <div>
-        <h2 class="h2">AI automation that connects<br>to your CRM and runs itself</h2>
-        <p class="sub">Most businesses have a CRM. Far fewer have AI working inside it &mdash; scoring every inbound lead, classifying every reply, routing enquiries to the right rep, and running outbound research without anyone pressing a button.</p>
-        <p style="font-size:13px;color:var(--mu);line-height:1.8;margin-bottom:1.25rem">Every agent we build solves a specific, measurable problem in your sales or marketing process &mdash; connected to your CRM, logged on every contact record, and visible to your team in real time.</p>
-        <a class="bp" href="contact.html">Talk to us about AI &#8599;</a>
-      </div>
-      <div>
-        <p style="font-size:11px;font-weight:500;color:var(--mu);margin-bottom:.65rem;letter-spacing:.5px">What every AI engagement includes</p>
-        <div class="check-list">
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Discovery and process mapping before any build</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Agents connected to your existing CRM</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Every action logged on contact and deal records</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Human review checkpoints where needed</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Error handling, failure alerting, and monitoring</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>GDPR-aware data handling throughout</div>
-        </div>
-      </div>
-    </div>
-
-    <p class="ey" style="margin-top:.5rem">The agents we build</p>
-    <h2 class="h2" style="margin-bottom:.5rem">Six agents. One revenue system.</h2>
-    <p style="font-size:13px;color:var(--mu);line-height:1.8;max-width:540px;margin-bottom:0">Deploy one, several, or all six &mdash; depending on where your biggest bottlenecks are. They all connect to your CRM.</p>
-
-    <div class="agents-g">
-      <div class="agent-c">
-        <div class="agent-ic" aria-hidden="true"><i class="ti ti-user-search"></i></div>
-        <div class="agent-num">Agent 01</div>
-        <h3>Signal researcher</h3>
-        <p style="font-size:12px;line-height:1.65;margin-bottom:.55rem">Monitors hiring signals, funding rounds, and intent data to surface warm prospects automatically &mdash; before your competitors do. Feeds enriched contacts directly into your CRM.</p>
-        <div class="tags"><span class="tag ctag">Apollo</span><span class="tag ctag">Clay</span><span class="tag ctag">Make.com</span><span class="tag ctag">n8n</span></div>
-      </div>
-      <div class="agent-c">
-        <div class="agent-ic" aria-hidden="true"><i class="ti ti-target-arrow"></i></div>
-        <div class="agent-num">Agent 02</div>
-        <h3>Lead scorer</h3>
-        <p style="font-size:12px;line-height:1.65;margin-bottom:.55rem">Scores every lead against your ICP in real time &mdash; firmographic fit, intent signals, engagement level, and role relevance. High-priority contacts surfaced to the right rep automatically.</p>
-        <div class="tags"><span class="tag ctag">Claude API</span><span class="tag ctag">HubSpot</span><span class="tag ctag">Make.com</span></div>
-      </div>
-      <div class="agent-c">
-        <div class="agent-ic" aria-hidden="true"><i class="ti ti-message-bolt"></i></div>
-        <div class="agent-num">Agent 03</div>
-        <h3>Message generator</h3>
-        <p style="font-size:12px;line-height:1.65;margin-bottom:.55rem">Writes personalised first-touch outreach based on company context, role, and recent signals &mdash; not mail merge. Human-reviewed before send.</p>
-        <div class="tags"><span class="tag ctag">Claude API</span><span class="tag ctag">Smartlead</span><span class="tag ctag">HeyReach</span></div>
-      </div>
-      <div class="agent-c">
-        <div class="agent-ic" aria-hidden="true"><i class="ti ti-mail-opened"></i></div>
-        <div class="agent-num">Agent 04</div>
-        <h3>Reply classifier</h3>
-        <p style="font-size:12px;line-height:1.65;margin-bottom:.55rem">Reads every reply and classifies it: interested, not now, objection, unsubscribe &mdash; then routes or responds accordingly. No inbox monitoring required.</p>
-        <div class="tags"><span class="tag ctag">Claude API</span><span class="tag ctag">Make.com</span><span class="tag ctag">CRM webhook</span></div>
-      </div>
-      <div class="agent-c">
-        <div class="agent-ic" aria-hidden="true"><i class="ti ti-forms"></i></div>
-        <div class="agent-num">Agent 05</div>
-        <h3>Inbound qualifier</h3>
-        <p style="font-size:12px;line-height:1.65;margin-bottom:.55rem">Qualifies every form submission or website lead against your ICP within minutes. Qualified leads routed to the right rep or sequence. Unqualified leads handled without wasting rep time.</p>
-        <div class="tags"><span class="tag ctag">Claude API</span><span class="tag ctag">HubSpot</span><span class="tag ctag">n8n</span></div>
-      </div>
-      <div class="agent-c">
-        <div class="agent-ic" aria-hidden="true"><i class="ti ti-refresh"></i></div>
-        <div class="agent-num">Agent 06</div>
-        <h3>Inbound reply handler</h3>
-        <p style="font-size:12px;line-height:1.65;margin-bottom:.55rem">Handles first-touch inbound replies &mdash; acknowledges, qualifies, and books calendar slots without rep involvement. Warm handoff with full CRM context when sales-ready.</p>
-        <div class="tags"><span class="tag ctag">Claude API</span><span class="tag ctag">Calendly</span><span class="tag ctag">Make.com</span></div>
-      </div>
-    </div>
-
-    <p class="ey" style="margin-top:2rem">How it works</p>
-    <h2 class="h2" style="margin-bottom:.5rem">Every agent connects to your CRM</h2>
-    <div class="flow-g">
-      <div class="flow-c"><div class="flow-n">01</div><h3 style="font-size:12px;font-weight:500;margin-bottom:.3rem">Signal or trigger</h3><p style="font-size:11px;line-height:1.55">A prospect signal, form submission, reply, or scheduled search fires the automation.</p></div>
-      <div class="flow-c"><div class="flow-n">02</div><h3 style="font-size:12px;font-weight:500;margin-bottom:.3rem">Claude API processes</h3><p style="font-size:11px;line-height:1.55">The AI reads, scores, classifies, or writes &mdash; based on your ICP and CRM data.</p></div>
-      <div class="flow-c"><div class="flow-n">03</div><h3 style="font-size:12px;font-weight:500;margin-bottom:.3rem">CRM is updated</h3><p style="font-size:11px;line-height:1.55">Score, classification, and action logged on the contact or deal record &mdash; visible to your team.</p></div>
-      <div class="flow-c"><div class="flow-n">04</div><h3 style="font-size:12px;font-weight:500;margin-bottom:.3rem">Rep gets what matters</h3><p style="font-size:11px;line-height:1.55">Warm leads routed. Replies handled. Bookings confirmed. Your team only touches things that need human judgment.</p></div>
-    </div>
-
-    <p class="ey" style="margin-top:2rem">Use cases by sector</p>
-    <div class="uc-g">
-      <div class="uc-c"><div class="uc-sector">SaaS</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Trial-to-demo conversion</h3><p style="font-size:12px;line-height:1.6">Product usage triggers lead scoring. High-intent trial users surfaced to reps within hours. Low-intent users enter nurture sequences automatically.</p><div class="tags" style="margin-top:.6rem"><span class="tag ctag">Lead scorer</span><span class="tag ctag">Inbound qualifier</span></div></div>
-      <div class="uc-c"><div class="uc-sector">Agency / professional services</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Consistent outbound new business</h3><p style="font-size:12px;line-height:1.6">Signal researcher finds warm prospects. Message generator writes personalised outreach. Reply classifier handles the inbox. Reps only speak to interested contacts.</p><div class="tags" style="margin-top:.6rem"><span class="tag ctag">Signal researcher</span><span class="tag ctag">Message generator</span><span class="tag ctag">Reply classifier</span></div></div>
-      <div class="uc-c"><div class="uc-sector">Legal services</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Client intake qualification</h3><p style="font-size:12px;line-height:1.6">Every web enquiry qualified by matter type and case complexity within minutes. Right fee-earner assigned automatically. Unqualified enquiries handled without wasting fee-earner time.</p><div class="tags" style="margin-top:.6rem"><span class="tag ctag">Inbound qualifier</span><span class="tag ctag">Inbound reply handler</span></div></div>
-      <div class="uc-c"><div class="uc-sector">Property</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Buyer and developer routing</h3><p style="font-size:12px;line-height:1.6">Inbound leads scored by engagement and budget &mdash; routed to the correct pipeline automatically. High-intent leads prioritised for immediate rep outreach.</p><div class="tags" style="margin-top:.6rem"><span class="tag ctag">Lead scorer</span><span class="tag ctag">Inbound qualifier</span></div></div>
-      <div class="uc-c"><div class="uc-sector">Data / research technology</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Multi-pipeline qualification</h3><p style="font-size:12px;line-height:1.6">Leads classified by buyer type and routed to the correct pipeline. Daily briefings on relevant prospects and signals &mdash; no manual research.</p><div class="tags" style="margin-top:.6rem"><span class="tag ctag">Signal researcher</span><span class="tag ctag">Lead scorer</span><span class="tag ctag">Reply classifier</span></div></div>
-      <div class="uc-c"><div class="uc-sector">Staffing</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Lead qualification and routing</h3><p style="font-size:12px;line-height:1.6">Inbound enquiries scored against client profile and order volume. Qualified leads auto-assigned to the right relationship manager.</p><div class="tags" style="margin-top:.6rem"><span class="tag ctag">Lead scorer</span><span class="tag ctag">Inbound qualifier</span></div></div>
+    <div class="faq-l" style="margin-top:1.25rem">
+      <p class="ey" style="margin-bottom:.75rem">Common questions</p>
+      <div class="faq-i"><div class="fq">How is project pricing determined?</div><div class="fa">Every project is scoped individually. Every quote includes what's in scope, what's excluded, and what triggers additional cost.</div></div>
+      <div class="faq-i"><div class="fq">Do I need a new CRM to use AI automation?</div><div class="fa">No &mdash; AI agents connect to your existing CRM. We build on top of what you already have.</div></div>
+      <div class="faq-i"><div class="fq">Not ready for a full project?</div><div class="fa">Start with a free <a href="ai-readiness-audit.html" style="color:var(--cy)">AI readiness report</a> for your HubSpot portal &mdash; no cost, no obligation, full breakdown included.</div></div>
     </div>
   </div>
 </div>
 
-<!-- ============ REVOPS ============ -->
-<div id="svc-revops" style="border-top:0.5px solid var(--br)">
-  <div class="svc-section">
-    <p class="ey">03 &mdash; RevOps strategy</p>
-    <div class="svc-header">
-      <div>
-        <h2 class="h2">RevOps strategy</h2>
-        <p class="sub">A CRM is only as good as the data model and process behind it. RevOps strategy aligns your sales and marketing teams around a shared pipeline &mdash; clean attribution, accurate forecasting, and dashboards that tell the truth.</p>
-        <a class="bp" href="contact.html">Discuss RevOps &#8599;</a>
-      </div>
-      <div>
-        <p style="font-size:11px;font-weight:500;color:var(--mu);margin-bottom:.65rem;letter-spacing:.5px">What RevOps strategy covers</p>
-        <div class="check-list">
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>ICP definition and GTM motion design</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Pipeline stage and lifecycle stage mapping</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Attribution modelling &mdash; first, last, and multi-touch</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Forecasting model and pipeline hygiene rules</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>KPI dashboard and reporting framework</div>
-          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Sales and marketing alignment</div>
-        </div>
-      </div>
-    </div>
-    <div class="ro-g">
-      <div class="ro-c"><div class="ro-n">01</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">One source of truth</h3><p style="font-size:12px;line-height:1.6">Sales, marketing, and CS working from the same CRM data model &mdash; no more spreadsheet reconciliations.</p></div>
-      <div class="ro-c"><div class="ro-n">02</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Clean attribution</h3><p style="font-size:12px;line-height:1.6">Know exactly which channels and campaigns are driving pipeline &mdash; not just traffic.</p></div>
-      <div class="ro-c"><div class="ro-n">03</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Accurate forecasting</h3><p style="font-size:12px;line-height:1.6">Stage-based probability models and pipeline health scoring so your forecast reflects reality.</p></div>
-      <div class="ro-c"><div class="ro-n">04</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Reporting that works</h3><p style="font-size:12px;line-height:1.6">Dashboards built for the decisions you actually need to make &mdash; not a default template.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ PLATFORMS ============ -->
-<div id="svc-platforms" style="border-top:0.5px solid var(--br);scroll-margin-top:115px">
-  <div class="band">
-    <div class="band-in">
-      <p class="ey">04 &mdash; Platforms</p>
-      <h2 class="h2" style="margin-bottom:.4rem">Platform-agnostic. You choose the right tool.</h2>
-      <p style="font-size:13px;color:var(--mu);max-width:480px;margin-bottom:0">No vendor referral fees. We advise based on your needs, then implement with genuine depth across all six.</p>
-      <div class="plat-g" style="margin-top:1.5rem">
-        <div class="plat-c"><div class="plat-d"></div><div class="plat-n">HubSpot</div><div class="plat-t">CRM + marketing</div><div class="plat-u">Best for: inbound-led businesses, marketing-sales alignment</div></div>
-        <div class="plat-c"><div class="plat-d"></div><div class="plat-n">Salesforce</div><div class="plat-t">Enterprise CRM</div><div class="plat-u">Best for: complex data models, CPQ, Service Cloud, Litify</div></div>
-        <div class="plat-c"><div class="plat-d"></div><div class="plat-n">Pipedrive</div><div class="plat-t">Sales-first CRM</div><div class="plat-u">Best for: sales teams wanting fast deployment and high adoption</div></div>
-        <div class="plat-c"><div class="plat-d"></div><div class="plat-n">Zoho CRM</div><div class="plat-t">Flexible + affordable</div><div class="plat-u">Best for: budget-conscious businesses needing customisation</div></div>
-        <div class="plat-c"><div class="plat-d"></div><div class="plat-n">Make.com</div><div class="plat-t">Automation layer</div><div class="plat-u">Most AI agent workflows. Fast, excellent CRM connectors.</div></div>
-        <div class="plat-c"><div class="plat-d"></div><div class="plat-n">n8n</div><div class="plat-t">Advanced automation</div><div class="plat-u">Complex branching logic, GDPR data residency, self-hosted.</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ PRICING ============ -->
-<div id="svc-pricing" style="border-top:0.5px solid var(--br)">
-  <div class="svc-section">
-    <p class="ey">05 &mdash; Pricing</p>
-    <h2 class="h2" style="margin-bottom:.4rem">Honest, scoped-to-fit pricing</h2>
-    <p class="sub" style="max-width:540px">Every project is scoped before a price is agreed. Every quote includes a breakdown of what's in scope, what's excluded, and what would trigger additional cost.</p>
-    <div class="price-g">
-      <div class="price-c">
-        <div class="ptier">AI readiness audit</div>
-        <div class="pamt">&pound;75</div>
-        <p class="pdesc">A structured review of your CRM and automation setup. Honest written findings on what's working, what isn't, and where AI could make a difference.</p>
-        <div class="pitems">
-          <div class="pi"><div class="pid"></div>CRM health and pipeline review</div>
-          <div class="pi"><div class="pid"></div>Automation gap assessment</div>
-          <div class="pi"><div class="pid"></div>Platform fit recommendation</div>
-          <div class="pi"><div class="pid"></div>Written findings within 48hrs</div>
-        </div>
-        <div class="pnote">If your setup is already in good shape, we'll tell you that too.</div>
-        <a class="bg" style="width:100%;text-align:center;display:block;margin-top:.85rem" href="ai-readiness-audit.html">Learn more &amp; book &#8599;</a>
-      </div>
-      <div class="price-c feat">
-        <div class="pbadge">Most common starting point</div>
-        <div class="ptier">CRM implementation</div>
-        <div class="pamt">From &pound;3,500 <span>scoped per project</span></div>
-        <p class="pdesc">Strategy, architecture, configuration, workflows, and team training. Complex builds scoped and quoted separately.</p>
-        <div class="pitems">
-          <div class="pi"><div class="pid"></div>Strategy document and architecture design</div>
-          <div class="pi"><div class="pid"></div>Pipeline, property, and workflow build</div>
-          <div class="pi"><div class="pid"></div>Email and calendar integration</div>
-          <div class="pi"><div class="pid"></div>Team training and handover documentation</div>
-        </div>
-        <div class="pnote">Every project scoped before price agreed &mdash; you'll always know what's included.</div>
-        <a class="bg" style="width:100%;text-align:center;display:block;margin-top:.85rem" href="contact.html">Learn more &amp; book &#8599;</a>
-      </div>
-      <div class="price-c">
-        <div class="ptier">Ongoing support retainer</div>
-        <div class="pamt">From &pound;800 <span>/month</span></div>
-        <p class="pdesc">Flexible monthly access to senior CRM and AI expertise &mdash; admin, optimisation, new automations, and troubleshooting.</p>
-        <div class="pitems">
-          <div class="pi"><div class="pid"></div>Defined monthly hours, no lock-in</div>
-          <div class="pi"><div class="pid"></div>CRM admin and workflow updates</div>
-          <div class="pi"><div class="pid"></div>New automation and agent builds</div>
-          <div class="pi"><div class="pid"></div>Priority response for urgent issues</div>
-        </div>
-        <div class="pnote">Scope and hours agreed upfront each month.</div>
-        <a class="bg" style="width:100%;text-align:center;display:block;margin-top:.85rem" href="contact.html">Learn more &amp; book &#8599;</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
 <div style="border-top:0.5px solid var(--br)"><div class="foot">
   <div><div class="logo">Windex<span style="color:var(--cy)">Tech</span></div></div>
   <div class="flinks">
     <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
     <a href="case-studies.html">Case studies</a>
-    <a href="contact.html">Contact</a>
     <a href="about.html">About us</a>
   </div>
   <div style="font-size:10px;color:var(--mu)">&copy; 2026 WindexTech Ltd</div>
 </div></div>
 
 <script>
-// highlight active anchor-nav tab on scroll
-const sections = ['svc-crm','svc-ai','svc-revops','svc-platforms','svc-pricing'].map(id=>document.getElementById(id));
-const tabs = document.querySelectorAll('.stab');
-function setActiveTab(){
-  let current = sections[0].id;
-  for(const sec of sections){
-    if(sec.getBoundingClientRect().top - 130 <= 0) current = sec.id;
+(function(){
+  var form = document.getElementById('contact-form');
+
+  // Show thank-you state when returning from Zoho (returnURL adds ?sent=1)
+  if (window.location.search.indexOf('sent=1') !== -1) {
+    var btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Message sent \u2713';
+    btn.style.backgroundColor = '#00a688';
   }
-  tabs.forEach(t=>{
-    t.classList.toggle('active', t.getAttribute('href') === '#'+current);
+
+  form.addEventListener('submit', function(){
+    // Fold the two dropdowns into the Description so the info reaches Zoho
+    var interest = document.getElementById('interest');
+    var crm = document.getElementById('crm');
+    var desc = document.getElementById('message');
+    var extra = [];
+    if (interest && interest.value) extra.push('Looking to do: ' + interest.value);
+    if (crm && crm.value) extra.push('Current CRM: ' + crm.value);
+    if (extra.length && desc) {
+      desc.value = (desc.value ? desc.value + '\n\n' : '') + extra.join('\n');
+    }
+    // Let the form POST normally to Zoho CRM
   });
-}
-window.addEventListener('scroll', setActiveTab);
-setActiveTab();
+})();
 </script>
 
 
