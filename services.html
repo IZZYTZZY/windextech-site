@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | WindexTech &mdash; CRM, AI Automation &amp; RevOps</title>
+<meta name="description" content="CRM implementation across HubSpot, Salesforce, Pipedrive and Zoho. AI automation with a six-agent revenue system. RevOps strategy. Honest, scoped-to-fit pricing.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.35.0/tabler-icons.min.css">
+<style>
+/* ============================================
+   WindexTech — shared stylesheet
+   ============================================ */
+
+:root{
+  --n:#0B1628;
+  --nc:#0f1e38;
+  --nd:#142240;
+  --cy:#00C6A2;
+  --cyd:#00a688;
+  --mu:rgba(255,255,255,0.55);
+  --br:rgba(255,255,255,0.09);
+  --cb:rgba(255,255,255,0.04);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--n);color:#fff;overflow-x:hidden}
+body{font-family:var(--font-sans);font-size:14px;line-height:1.6;min-height:100vh}
+h1,h2,h3,h4,h5,h6,p,span,div,li,label{color:inherit}
+img{max-width:100%;display:block}
+a{text-decoration:none}
+
+button{appearance:none;-webkit-appearance:none;-moz-appearance:none;font-family:inherit;border:none;outline:none;cursor:pointer}
+
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* ---------- nav ---------- */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:58px;border-bottom:0.5px solid var(--br);background:var(--n);position:sticky;top:0;z-index:50}
+.logo{font-size:16px;font-weight:500;letter-spacing:-0.3px;cursor:pointer;color:#fff}
+.logo span{color:var(--cy)}
+.nl{display:flex;gap:1.5rem;font-size:13px;color:var(--mu)}
+.nl a{cursor:pointer;padding:4px 0;border-bottom:1.5px solid transparent;transition:color .15s;color:var(--mu)}
+.nl a:hover{color:#fff}
+.nl a.active{color:#fff;border-bottom-color:var(--cy)}
+.nbtn{background-color:#00C6A2!important;color:#0B1628!important;font-size:12px;font-weight:500;padding:7px 15px;border-radius:6px;border:none}
+.nbtn:hover{background-color:#00a688!important}
+
+/* ---------- generic helpers ---------- */
+.ey{font-size:10px;font-weight:500;color:var(--cy)!important;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.6rem}
+.hdiv{border:none;border-top:0.5px solid var(--br)}
+.bp{background-color:#00C6A2!important;color:#0B1628!important;font-size:12px;font-weight:500;padding:9px 18px;border-radius:6px;border:none;display:inline-block}
+.bp:hover{background-color:#00a688!important}
+.bg{background-color:transparent!important;color:#ffffff!important;font-size:12px;padding:9px 18px;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);display:inline-block}
+.bg:hover{border-color:rgba(255,255,255,0.4)}
+.sec{padding:2.5rem 2rem;max-width:1040px;margin:0 auto}
+.h2{font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-.4px;line-height:1.2;margin-bottom:.55rem;color:#fff!important}
+.sub{font-size:13px;color:var(--mu)!important;line-height:1.8;margin-bottom:1.5rem}
+.band{background:var(--nc);border-top:0.5px solid var(--br);border-bottom:0.5px solid var(--br);padding:2.5rem 2rem}
+.band-in{max-width:1040px;margin:0 auto}
+.tbar{border-top:0.5px solid var(--br);border-bottom:0.5px solid var(--br);padding:.9rem 2rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.tlbl{font-size:10px;font-weight:500;color:var(--mu)!important;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+.tlog{font-size:12px;font-weight:500;color:rgba(255,255,255,0.28)!important}
+.foot{padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--mu)!important;max-width:1040px;margin:0 auto;flex-wrap:wrap;gap:.75rem;border-top:0.5px solid var(--br)}
+.flinks{display:flex;gap:1.25rem}
+.flinks a{color:var(--mu)!important;cursor:pointer}
+.flinks a:hover{color:#fff!important}
+.tag{font-size:10px;padding:2px 6px;background:rgba(255,255,255,0.05);border-radius:3px;color:rgba(255,255,255,0.45)!important}
+.ctag{background:rgba(0,198,162,0.08);color:var(--cy)!important}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:.55rem}
+.card{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1rem;transition:border-color .15s;color:#fff}
+.card:hover{border-color:rgba(0,198,162,0.28)}
+.card h3,.agent-c h3,.uc-c h3,.ro-c h3,.flow-c h3,.cs-name,.cs-bc h3{color:#fff!important}
+.card p,.agent-c p,.uc-c p,.ro-c p,.flow-c p{color:var(--mu)!important}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}
+.ic{width:34px;height:34px;background:rgba(0,198,162,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--cy)!important;margin-bottom:.75rem}
+
+/* ---------- hero ---------- */
+.hero-g{display:grid;grid-template-columns:1fr 360px;gap:3rem;align-items:start;padding:3.5rem 2rem 2.5rem;max-width:1040px;margin:0 auto}
+.h1{font-size:clamp(26px,3.5vw,46px);font-weight:500;line-height:1.12;letter-spacing:-1px;margin-bottom:1rem;color:#fff!important}
+.h1 em{color:var(--cy)!important;font-style:normal}
+.hacts{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:1.75rem}
+.hstats{display:flex;gap:1.75rem;padding-top:1.25rem;border-top:0.5px solid var(--br)}
+.hstat .n{font-size:20px;font-weight:500;color:#fff!important}
+.hstat .l{font-size:10px;color:var(--mu)!important;margin-top:1px}
+.hcard{background:var(--nd);border:0.5px solid var(--br);border-radius:11px;padding:1.2rem;color:#fff}
+.hcard-lbl{font-size:10px;font-weight:500;color:var(--cy)!important;letter-spacing:1px;text-transform:uppercase;margin-bottom:.8rem}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.ppill{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.09);border-radius:6px;padding:6px 7px;text-align:center;font-size:11px;font-weight:500;color:rgba(255,255,255,0.6)!important}
+.ppill:hover{background:rgba(0,198,162,0.1);border-color:rgba(0,198,162,0.3);color:var(--cy)!important}
+.hcdiv{border:none;border-top:0.5px solid var(--br);margin:.85rem 0}
+
+/* ---------- services anchor nav ---------- */
+.svc-anav{background:var(--nc);border-bottom:0.5px solid var(--br);padding:0 2rem;position:sticky;top:58px;z-index:40}
+.svc-anav-in{max-width:1040px;margin:0 auto;display:flex;gap:0;overflow-x:auto}
+.stab{font-size:12px;font-weight:500;color:var(--mu)!important;padding:.75rem 1.1rem;border-bottom:2px solid transparent;white-space:nowrap;background:transparent!important;border-top:none;border-left:none;border-right:none;transition:color .15s,border-color .15s;text-decoration:none}
+.stab:hover{color:#fff!important}
+.stab.active{color:var(--cy)!important;border-bottom-color:var(--cy)}
+.svc-section{padding:2.5rem 2rem;max-width:1040px;margin:0 auto;scroll-margin-top:115px}
+.svc-header{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin-bottom:2rem}
+.check-list{display:flex;flex-direction:column;gap:.4rem}
+.chk-item{font-size:12px;color:rgba(255,255,255,0.72)!important;display:flex;align-items:center;gap:.55rem}
+.chk{width:15px;height:15px;min-width:15px;background:rgba(0,198,162,0.12);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--cy)!important}
+
+/* ---------- agent cards ---------- */
+.agents-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.agent-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1.1rem;transition:border-color .15s;color:#fff}
+.agent-c:hover{border-color:rgba(0,198,162,0.3)}
+.agent-ic{width:36px;height:36px;background:rgba(0,198,162,0.1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--cy)!important;margin-bottom:.7rem}
+.agent-num{font-size:10px;font-weight:500;color:var(--cy)!important;letter-spacing:1px;text-transform:uppercase;margin-bottom:.35rem}
+
+/* ---------- flow ---------- */
+.flow-g{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:1.75rem;position:relative}
+.flow-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1rem;text-align:center;position:relative;color:#fff}
+.flow-c:not(:last-child):after{content:'\2192';position:absolute;right:-.6rem;top:50%;transform:translateY(-50%);font-size:14px;color:var(--cy)!important;z-index:1}
+.flow-n{font-size:22px;font-weight:500;color:var(--cy)!important;margin-bottom:.3rem}
+
+/* ---------- use cases ---------- */
+.uc-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1.75rem}
+.uc-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1rem;color:#fff}
+.uc-c:hover{border-color:rgba(0,198,162,0.25)}
+.uc-sector{font-size:10px;font-weight:500;color:var(--cy)!important;letter-spacing:1px;text-transform:uppercase;margin-bottom:.45rem}
+
+/* ---------- revops ---------- */
+.ro-g{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:1.75rem}
+.ro-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1rem;color:#fff}
+.ro-n{font-size:22px;font-weight:500;color:var(--cy)!important;margin-bottom:.3rem}
+
+/* ---------- platforms ---------- */
+.plat-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:.75rem}
+.plat-c{background:rgba(255,255,255,0.03);border:0.5px solid var(--br);border-radius:9px;padding:1rem;transition:border-color .15s;color:#fff}
+.plat-c:hover{border-color:rgba(0,198,162,0.25)}
+.plat-d{width:6px;height:6px;border-radius:50%;background:var(--cy);margin-bottom:.6rem}
+.plat-n{font-size:12px;font-weight:500;margin-bottom:2px;color:#fff!important}
+.plat-t{font-size:10px;color:var(--mu)!important;margin-bottom:.5rem}
+.plat-u{font-size:10px;color:rgba(255,255,255,0.35)!important;line-height:1.5}
+
+/* ---------- pricing ---------- */
+.price-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.price-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1.25rem;color:#fff}
+.price-c.feat{border-color:rgba(0,198,162,0.4);background:rgba(0,198,162,0.04)}
+.pbadge{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;background:rgba(0,198,162,0.15);color:var(--cy)!important;border-radius:4px;margin-bottom:.65rem}
+.ptier{font-size:14px;font-weight:500;margin-bottom:.3rem;color:#fff!important}
+.pamt{font-size:20px;font-weight:500;color:var(--cy)!important;margin-bottom:.15rem}
+.pamt span{font-size:11px;font-weight:400;color:var(--mu)!important}
+.pdesc{font-size:12px;color:var(--mu)!important;margin-bottom:.85rem;line-height:1.65}
+.pitems{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.85rem}
+.pi{font-size:11px;color:rgba(255,255,255,0.6)!important;display:flex;align-items:center;gap:.45rem}
+.pid{width:4px;height:4px;border-radius:50%;background:var(--cy);min-width:4px}
+.pnote{font-size:10px;color:var(--mu)!important;padding-top:.75rem;border-top:0.5px solid var(--br);line-height:1.55}
+
+/* ---------- tech stack ---------- */
+.stack-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:.75rem;margin-top:1.75rem}
+.stack-c{background:rgba(255,255,255,0.03);border:0.5px solid var(--br);border-radius:9px;padding:1rem;transition:border-color .15s;color:#fff}
+.stack-c:hover{border-color:rgba(0,198,162,0.2)}
+.stack-lbl{font-size:10px;font-weight:500;color:var(--cy)!important;letter-spacing:1px;text-transform:uppercase;margin-bottom:.65rem}
+.stool{font-size:12px;color:rgba(255,255,255,0.65)!important;display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem}
+.st-dot{width:4px;height:4px;border-radius:50%;background:rgba(0,198,162,0.5);min-width:4px}
+
+/* ---------- testimonials ---------- */
+.proof-g{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.proof-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1.2rem;color:#fff}
+.pq{font-size:13px;color:rgba(255,255,255,0.7)!important;line-height:1.75;margin-bottom:.75rem;font-style:italic}
+.pc{font-size:11px;color:var(--mu)!important}
+.pc span{color:var(--cy)!important}
+
+/* ---------- case studies ---------- */
+.cs-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:.85rem;margin-top:1.75rem}
+.cs-c{background:var(--cb);border:0.5px solid var(--br);border-radius:10px;overflow:hidden;cursor:pointer;transition:border-color .15s;color:#fff}
+.cs-c:hover{border-color:rgba(0,198,162,0.35)}
+.cs-top{padding:1.2rem;border-bottom:0.5px solid var(--br)}
+.cs-br{display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem}
+.cs-init{width:36px;height:36px;border-radius:8px;background:rgba(0,198,162,0.12);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--cy)!important}
+.cs-name{font-size:14px;font-weight:500;margin-bottom:2px}
+.cs-sector{font-size:11px;color:var(--mu)!important;margin-bottom:.75rem}
+.cs-brief{font-size:12px;color:rgba(255,255,255,0.6)!important;line-height:1.65}
+.cs-bot{padding:1rem 1.2rem;display:flex;gap:1rem}
+.cs-s{text-align:center;flex:1}
+.cs-s .n{font-size:16px;font-weight:500;color:var(--cy)!important}
+.cs-s .l{font-size:10px;color:var(--mu)!important;margin-top:1px}
+.cs-dw{display:none;padding:2.5rem 2rem;max-width:1040px;margin:0 auto}
+.cs-dw.show{display:block}
+.cs-back{font-size:12px;color:var(--cy)!important;cursor:pointer;display:flex;align-items:center;gap:.35rem;margin-bottom:1.5rem}
+.cs-dh{display:grid;grid-template-columns:1fr 265px;gap:2rem;margin-bottom:1.75rem}
+.cs-dh h1{font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-.4px;margin-bottom:.75rem;color:#fff!important}
+.cs-dh p{font-size:13px;color:var(--mu)!important;line-height:1.85;margin-bottom:.75rem}
+.cs-sb{background:var(--nd);border:0.5px solid var(--br);border-radius:10px;padding:1.1rem;color:#fff}
+.cs-mr{display:flex;justify-content:space-between;padding:.45rem 0;border-bottom:0.5px solid var(--br)}
+.cs-mr:last-child{border-bottom:none}
+.cs-ml{font-size:11px;color:var(--mu)!important}
+.cs-mv{font-size:11px;font-weight:500;color:var(--cy)!important}
+.cs-sr{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.5rem}
+.cs-sc{background:var(--cb);border:0.5px solid var(--br);border-radius:8px;padding:.8rem;text-align:center;color:#fff}
+.cs-sc .n{font-size:19px;font-weight:500;color:var(--cy)!important;margin-bottom:2px}
+.cs-sc .l{font-size:10px;color:var(--mu)!important;line-height:1.4}
+.cs-bg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin-bottom:1.5rem}
+.cs-bc{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1rem;color:#fff}
+.cs-bc h3{font-size:11px;font-weight:500;margin-bottom:.45rem;color:var(--cy)!important}
+.cs-bc ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.cs-bc li{font-size:12px;color:var(--mu)!important;line-height:1.55;display:flex;align-items:flex-start;gap:.4rem}
+.cs-bc li:before{content:'';width:4px;height:4px;border-radius:50%;background:var(--cy);min-width:4px;margin-top:6px}
+.cs-qt{background:rgba(0,198,162,0.06);border:0.5px solid rgba(0,198,162,0.18);border-radius:9px;padding:1.2rem;margin-bottom:1.5rem;color:#fff}
+.cs-qt p{font-size:13px;color:rgba(255,255,255,0.75)!important;font-style:italic;line-height:1.75;margin-bottom:.5rem}
+.cs-qt cite{font-size:11px;color:var(--mu)!important}
+
+/* ---------- about ---------- */
+.about-g{display:grid;grid-template-columns:1fr 310px;gap:2.5rem;align-items:start}
+.fc{background:var(--cb);border:0.5px solid var(--br);border-radius:10px;padding:1.25rem;color:#fff}
+.fav{width:52px;height:52px;border-radius:50%;background:rgba(0,198,162,0.15);border:0.5px solid rgba(0,198,162,0.3);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;color:var(--cy)!important;margin-bottom:.9rem}
+.fsg{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.85rem}
+.fs{background:rgba(0,198,162,0.06);border:0.5px solid rgba(0,198,162,0.12);border-radius:7px;padding:.55rem .65rem;text-align:center;color:#fff}
+.fs .n{font-size:16px;font-weight:500;color:var(--cy)!important}
+.fs .l{font-size:10px;color:var(--mu)!important;margin-top:1px;line-height:1.35}
+.n8n-box{background:rgba(0,198,162,0.06);border:0.5px solid rgba(0,198,162,0.2);border-radius:9px;padding:1.25rem;margin-top:1.25rem;color:#fff}
+.n8n-h{display:flex;align-items:center;gap:.65rem;margin-bottom:.75rem}
+.n8n-badge{font-size:10px;font-weight:500;padding:2px 8px;background:rgba(0,198,162,0.15);color:var(--cy)!important;border-radius:4px}
+.n8n-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem}
+.n8n-p{background:rgba(255,255,255,0.03);border:0.5px solid rgba(0,198,162,0.12);border-radius:7px;padding:.75rem;color:#fff}
+.n8n-p h4{font-size:11px;font-weight:500;color:var(--cy)!important;margin-bottom:2px}
+.n8n-p p{font-size:11px;color:var(--mu)!important;line-height:1.55}
+.val-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+
+/* ---------- contact ---------- */
+.contact-g{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1040px;margin:0 auto;padding:2.5rem 2rem}
+.cform{background:var(--nd);border:0.5px solid var(--br);border-radius:11px;padding:1.75rem;color:#fff}
+.cform h2{font-size:20px;font-weight:500;margin-bottom:.5rem;color:#fff!important}
+.cform p{font-size:12px;color:var(--mu)!important;margin-bottom:1.5rem;line-height:1.7}
+.fr{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.fr label{font-size:11px;font-weight:500;color:var(--mu)!important}
+.fr input,.fr select,.fr textarea{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.15);border-radius:6px;padding:9px 12px;font-size:12px;color:#fff!important;width:100%;outline:none;font-family:var(--font-sans)}
+.fr input:focus,.fr select:focus,.fr textarea:focus{border-color:var(--cy)}
+.fr select option{background:var(--n);color:#fff}
+.fr textarea{resize:vertical;min-height:90px}
+.fr input::placeholder,.fr textarea::placeholder{color:rgba(255,255,255,0.3)}
+.ci-item{display:flex;align-items:flex-start;gap:.65rem;background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:.85rem 1rem;margin-bottom:.75rem;color:#fff}
+.ci-icon{width:30px;height:30px;min-width:30px;background:rgba(0,198,162,0.1);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--cy)!important}
+.ci-item h4{font-size:12px;font-weight:500;margin-bottom:2px;color:#fff!important}
+.ci-item p{font-size:11px;color:var(--mu)!important}
+.faq-l{display:flex;flex-direction:column}
+.faq-i{border-bottom:0.5px solid var(--br);padding:.9rem 0}
+.fq{font-size:13px;font-weight:500;margin-bottom:.3rem;color:#fff!important}
+.fa{font-size:12px;color:var(--mu)!important;line-height:1.65}
+.ci-form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.ci-in{background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.18);border-radius:6px;padding:9px 13px;font-size:12px;color:#fff!important;width:220px;outline:none}
+.ci-in::placeholder{color:rgba(255,255,255,0.3)}
+.ci-in:focus{border-color:var(--cy)}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 860px){
+  .hero-g{grid-template-columns:1fr;gap:1.5rem}
+  .g3,.g4,.agents-g,.uc-g,.ro-g,.price-g,.cs-bg,.cs-sr,.val-g{grid-template-columns:repeat(2,1fr)}
+  .svc-header,.about-g,.cs-dh,.contact-g{grid-template-columns:1fr}
+  .flow-g{grid-template-columns:repeat(2,1fr)}
+  .flow-c:not(:last-child):after{display:none}
+  .nl{display:none}
+}
+@media (max-width: 540px){
+  .g3,.g4,.agents-g,.uc-g,.ro-g,.price-g,.cs-bg,.cs-sr,.val-g,.flow-g,.pgrid{grid-template-columns:1fr}
+  .hero-g,.sec,.svc-section,.band,.contact-g{padding-left:1.25rem;padding-right:1.25rem}
+  .nav{padding:0 1.25rem}
+}
+
+</style>
+
+<style id="mobile-nav-fix">
+/* --- Hamburger button --- */
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;width:38px;height:38px;flex-direction:column;justify-content:center;gap:5px;z-index:1001}
+.nav-toggle span{display:block;height:2px;width:22px;background:#fff;border-radius:2px;transition:transform .25s ease,opacity .25s ease}
+.nav-toggle.open span{background:#fff}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999}
+.nav-backdrop.show{display:block}
+@media (max-width: 860px){
+  .nav{position:relative}
+  .nav-toggle{display:flex}
+  .nl{
+    display:flex !important;flex-direction:column;align-items:flex-start;gap:0;
+    position:fixed;top:0;right:0;height:100vh;width:min(80vw,300px);
+    background:#0B1628;box-shadow:-8px 0 30px rgba(0,0,0,.4);
+    padding:84px 26px 26px;z-index:1000;
+    transform:translateX(105%);transition:transform .3s ease;overflow-y:auto
+  }
+  .nl.open{transform:translateX(0)}
+  .nl a{width:100%;padding:15px 0;font-size:16px;color:#fff !important;border-bottom:.5px solid rgba(255,255,255,.1)}
+  .nl a.active{color:#00C6A2 !important}
+  .nav .nbtn{margin-left:auto;margin-right:12px}
+}
+@media (max-width: 540px){
+  .nav .nbtn{display:none}
+  .nl{width:84vw}
+}
+@media (max-width: 860px){
+  html,body{overflow-x:hidden;max-width:100%}
+  img{max-width:100%;height:auto}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="logo" href="index.html">Windex<span>Tech</span></a>
+  <div class="nl">
+    <a href="index.html">Home</a>
+    <a href="services.html" class="active">Services</a>
+    <a href="case-studies.html">Case studies</a>
+    <a href="ai-readiness-audit.html">AI Readiness Audit</a>
+    <a href="contact.html">Contact</a>
+    <a href="about.html">About us</a>
+  </div>
+  <a class="nbtn" href="contact.html">Book a call</a>
+</nav>
+
+<div class="sec">
+  <p class="ey">Services</p>
+  <h2 class="h2" style="font-size:clamp(22px,3vw,38px)">CRM, AI automation &amp;<br><em style="color:var(--cy);font-style:normal">RevOps &mdash; all in one place</em></h2>
+  <p class="sub" style="max-width:540px">From platform selection and CRM implementation through to AI agent builds and revenue operations strategy. Scroll through or jump to the section you need.</p>
+  <div style="display:flex;gap:9px;flex-wrap:wrap">
+    <a class="bp" href="ai-readiness-audit.html">Get your free AI readiness report &#8599;</a>
+    <a class="bg" href="case-studies.html">See case studies &rarr;</a>
+  </div>
+</div>
+
+<!-- ANCHOR NAV -->
+<div class="svc-anav">
+  <div class="svc-anav-in">
+    <a class="stab" href="#svc-crm">CRM implementation</a>
+    <a class="stab" href="#svc-ai">AI automation</a>
+    <a class="stab" href="#svc-revops">RevOps strategy</a>
+    <a class="stab" href="#svc-platforms">Platforms</a>
+    <a class="stab" href="#svc-pricing">Pricing</a>
+  </div>
+</div>
+
+<!-- ============ CRM IMPLEMENTATION ============ -->
+<div id="svc-crm" style="border-top:0.5px solid var(--br)">
+  <div class="svc-section">
+    <p class="ey">01 &mdash; CRM implementation</p>
+    <div class="svc-header">
+      <div>
+        <h2 class="h2">CRM implementation</h2>
+        <p class="sub">Most CRM projects fail at configuration &mdash; wrong pipeline structure, unmapped fields, automations that don't match how your team actually works. We fix this by starting with deep process discovery before touching a single setting.</p>
+        <a class="bp" href="contact.html">Start a conversation &#8599;</a>
+      </div>
+      <div>
+        <p style="font-size:11px;font-weight:500;color:var(--mu);margin-bottom:.65rem;letter-spacing:.5px">What's always included</p>
+        <div class="check-list">
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Written CRM strategy document before build starts</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Pipeline and stage architecture design</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Custom properties, workflows, and dashboards</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Email and calendar integration</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Team training with recorded walkthroughs</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Handover documentation and go-live support</div>
+        </div>
+      </div>
+    </div>
+    <div class="g3">
+      <div class="card"><div style="font-size:18px;color:var(--cy);margin-bottom:.6rem" aria-hidden="true"><i class="ti ti-target"></i></div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">HubSpot</h3><p style="font-size:12px;line-height:1.6">Sales Hub, Marketing Hub, and Service Hub. Inbound-led businesses, marketing-sales alignment, and ease of adoption.</p></div>
+      <div class="card"><div style="font-size:18px;color:var(--cy);margin-bottom:.6rem" aria-hidden="true"><i class="ti ti-cloud"></i></div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Salesforce</h3><p style="font-size:12px;line-height:1.6">Sales Cloud, Service Cloud, CPQ, and Litify. Complex data models, enterprise integrations, and industry-specific builds.</p></div>
+      <div class="card"><div style="font-size:18px;color:var(--cy);margin-bottom:.6rem" aria-hidden="true"><i class="ti ti-chart-arrows-vertical"></i></div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Pipedrive</h3><p style="font-size:12px;line-height:1.6">Sales-first CRM for teams that want fast deployment, visual pipelines, and high rep adoption from week one.</p></div>
+      <div class="card"><div style="font-size:18px;color:var(--cy);margin-bottom:.6rem" aria-hidden="true"><i class="ti ti-adjustments-horizontal"></i></div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Zoho CRM</h3><p style="font-size:12px;line-height:1.6">Flexible and cost-effective. Ideal for businesses needing deep customisation without the Salesforce price tag.</p></div>
+      <div class="card"><div style="font-size:18px;color:var(--cy);margin-bottom:.6rem" aria-hidden="true"><i class="ti ti-arrow-right-circle"></i></div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">CRM migrations</h3><p style="font-size:12px;line-height:1.6">Full platform switches &mdash; Salesforce to HubSpot and any direction. 50,000+ records, integrations, and complete process rebuild.</p></div>
+      <div class="card"><div style="font-size:18px;color:var(--cy);margin-bottom:.6rem" aria-hidden="true"><i class="ti ti-scale"></i></div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Legal CRM &amp; Litify</h3><p style="font-size:12px;line-height:1.6">Litify on Salesforce for law firms &mdash; matter management, client intake, eBilling, fee-earner workflows, GDPR-compliant configuration.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ AI AUTOMATION ============ -->
+<div id="svc-ai" style="border-top:0.5px solid var(--br);background:rgba(0,198,162,0.02)">
+  <div class="svc-section">
+    <p class="ey">02 &mdash; AI automation</p>
+    <div class="svc-header">
+      <div>
+        <h2 class="h2">AI automation that connects<br>to your CRM and runs itself</h2>
+        <p class="sub">Most businesses have a CRM. Far fewer have AI working inside it &mdash; scoring every inbound lead, classifying every reply, routing enquiries to the right rep, and running outbound research without anyone pressing a button.</p>
+        <p style="font-size:13px;color:var(--mu);line-height:1.8;margin-bottom:1.25rem">Every agent we build solves a specific, measurable problem in your sales or marketing process &mdash; connected to your CRM, logged on every contact record, and visible to your team in real time.</p>
+        <a class="bp" href="contact.html">Talk to us about AI &#8599;</a>
+      </div>
+      <div>
+        <p style="font-size:11px;font-weight:500;color:var(--mu);margin-bottom:.65rem;letter-spacing:.5px">What every AI engagement includes</p>
+        <div class="check-list">
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Discovery and process mapping before any build</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Agents connected to your existing CRM</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Every action logged on contact and deal records</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Human review checkpoints where needed</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Error handling, failure alerting, and monitoring</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>GDPR-aware data handling throughout</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="ey" style="margin-top:.5rem">The agents we build</p>
+    <h2 class="h2" style="margin-bottom:.5rem">Six agents. One revenue system.</h2>
+    <p style="font-size:13px;color:var(--mu);line-height:1.8;max-width:540px;margin-bottom:0">Deploy one, several, or all six &mdash; depending on where your biggest bottlenecks are. They all connect to your CRM.</p>
+
+    <div class="agents-g">
+      <div class="agent-c">
+        <div class="agent-ic" aria-hidden="true"><i class="ti ti-user-search"></i></div>
+        <div class="agent-num">Agent 01</div>
+        <h3>Signal researcher</h3>
+        <p style="font-size:12px;line-height:1.65;margin-bottom:.55rem">Monitors hiring signals, funding rounds, and intent data to surface warm prospects automatically &mdash; before your competitors do. Feeds enriched contacts directly into your CRM.</p>
+        <div class="tags"><span class="tag ctag">Apollo</span><span class="tag ctag">Clay</span><span class="tag ctag">Make.com</span><span class="tag ctag">n8n</span></div>
+      </div>
+      <div class="agent-c">
+        <div class="agent-ic" aria-hidden="true"><i class="ti ti-target-arrow"></i></div>
+        <div class="agent-num">Agent 02</div>
+        <h3>Lead scorer</h3>
+        <p style="font-size:12px;line-height:1.65;margin-bottom:.55rem">Scores every lead against your ICP in real time &mdash; firmographic fit, intent signals, engagement level, and role relevance. High-priority contacts surfaced to the right rep automatically.</p>
+        <div class="tags"><span class="tag ctag">Claude API</span><span class="tag ctag">HubSpot</span><span class="tag ctag">Make.com</span></div>
+      </div>
+      <div class="agent-c">
+        <div class="agent-ic" aria-hidden="true"><i class="ti ti-message-bolt"></i></div>
+        <div class="agent-num">Agent 03</div>
+        <h3>Message generator</h3>
+        <p style="font-size:12px;line-height:1.65;margin-bottom:.55rem">Writes personalised first-touch outreach based on company context, role, and recent signals &mdash; not mail merge. Human-reviewed before send.</p>
+        <div class="tags"><span class="tag ctag">Claude API</span><span class="tag ctag">Smartlead</span><span class="tag ctag">HeyReach</span></div>
+      </div>
+      <div class="agent-c">
+        <div class="agent-ic" aria-hidden="true"><i class="ti ti-mail-opened"></i></div>
+        <div class="agent-num">Agent 04</div>
+        <h3>Reply classifier</h3>
+        <p style="font-size:12px;line-height:1.65;margin-bottom:.55rem">Reads every reply and classifies it: interested, not now, objection, unsubscribe &mdash; then routes or responds accordingly. No inbox monitoring required.</p>
+        <div class="tags"><span class="tag ctag">Claude API</span><span class="tag ctag">Make.com</span><span class="tag ctag">CRM webhook</span></div>
+      </div>
+      <div class="agent-c">
+        <div class="agent-ic" aria-hidden="true"><i class="ti ti-forms"></i></div>
+        <div class="agent-num">Agent 05</div>
+        <h3>Inbound qualifier</h3>
+        <p style="font-size:12px;line-height:1.65;margin-bottom:.55rem">Qualifies every form submission or website lead against your ICP within minutes. Qualified leads routed to the right rep or sequence. Unqualified leads handled without wasting rep time.</p>
+        <div class="tags"><span class="tag ctag">Claude API</span><span class="tag ctag">HubSpot</span><span class="tag ctag">n8n</span></div>
+      </div>
+      <div class="agent-c">
+        <div class="agent-ic" aria-hidden="true"><i class="ti ti-refresh"></i></div>
+        <div class="agent-num">Agent 06</div>
+        <h3>Inbound reply handler</h3>
+        <p style="font-size:12px;line-height:1.65;margin-bottom:.55rem">Handles first-touch inbound replies &mdash; acknowledges, qualifies, and books calendar slots without rep involvement. Warm handoff with full CRM context when sales-ready.</p>
+        <div class="tags"><span class="tag ctag">Claude API</span><span class="tag ctag">Calendly</span><span class="tag ctag">Make.com</span></div>
+      </div>
+    </div>
+
+    <p class="ey" style="margin-top:2rem">How it works</p>
+    <h2 class="h2" style="margin-bottom:.5rem">Every agent connects to your CRM</h2>
+    <div class="flow-g">
+      <div class="flow-c"><div class="flow-n">01</div><h3 style="font-size:12px;font-weight:500;margin-bottom:.3rem">Signal or trigger</h3><p style="font-size:11px;line-height:1.55">A prospect signal, form submission, reply, or scheduled search fires the automation.</p></div>
+      <div class="flow-c"><div class="flow-n">02</div><h3 style="font-size:12px;font-weight:500;margin-bottom:.3rem">Claude API processes</h3><p style="font-size:11px;line-height:1.55">The AI reads, scores, classifies, or writes &mdash; based on your ICP and CRM data.</p></div>
+      <div class="flow-c"><div class="flow-n">03</div><h3 style="font-size:12px;font-weight:500;margin-bottom:.3rem">CRM is updated</h3><p style="font-size:11px;line-height:1.55">Score, classification, and action logged on the contact or deal record &mdash; visible to your team.</p></div>
+      <div class="flow-c"><div class="flow-n">04</div><h3 style="font-size:12px;font-weight:500;margin-bottom:.3rem">Rep gets what matters</h3><p style="font-size:11px;line-height:1.55">Warm leads routed. Replies handled. Bookings confirmed. Your team only touches things that need human judgment.</p></div>
+    </div>
+
+    <p class="ey" style="margin-top:2rem">Use cases by sector</p>
+    <div class="uc-g">
+      <div class="uc-c"><div class="uc-sector">SaaS</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Trial-to-demo conversion</h3><p style="font-size:12px;line-height:1.6">Product usage triggers lead scoring. High-intent trial users surfaced to reps within hours. Low-intent users enter nurture sequences automatically.</p><div class="tags" style="margin-top:.6rem"><span class="tag ctag">Lead scorer</span><span class="tag ctag">Inbound qualifier</span></div></div>
+      <div class="uc-c"><div class="uc-sector">Agency / professional services</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Consistent outbound new business</h3><p style="font-size:12px;line-height:1.6">Signal researcher finds warm prospects. Message generator writes personalised outreach. Reply classifier handles the inbox. Reps only speak to interested contacts.</p><div class="tags" style="margin-top:.6rem"><span class="tag ctag">Signal researcher</span><span class="tag ctag">Message generator</span><span class="tag ctag">Reply classifier</span></div></div>
+      <div class="uc-c"><div class="uc-sector">Legal services</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Client intake qualification</h3><p style="font-size:12px;line-height:1.6">Every web enquiry qualified by matter type and case complexity within minutes. Right fee-earner assigned automatically. Unqualified enquiries handled without wasting fee-earner time.</p><div class="tags" style="margin-top:.6rem"><span class="tag ctag">Inbound qualifier</span><span class="tag ctag">Inbound reply handler</span></div></div>
+      <div class="uc-c"><div class="uc-sector">Property</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Buyer and developer routing</h3><p style="font-size:12px;line-height:1.6">Inbound leads scored by engagement and budget &mdash; routed to the correct pipeline automatically. High-intent leads prioritised for immediate rep outreach.</p><div class="tags" style="margin-top:.6rem"><span class="tag ctag">Lead scorer</span><span class="tag ctag">Inbound qualifier</span></div></div>
+      <div class="uc-c"><div class="uc-sector">Data / research technology</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Multi-pipeline qualification</h3><p style="font-size:12px;line-height:1.6">Leads classified by buyer type and routed to the correct pipeline. Daily briefings on relevant prospects and signals &mdash; no manual research.</p><div class="tags" style="margin-top:.6rem"><span class="tag ctag">Signal researcher</span><span class="tag ctag">Lead scorer</span><span class="tag ctag">Reply classifier</span></div></div>
+      <div class="uc-c"><div class="uc-sector">Staffing</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Lead qualification and routing</h3><p style="font-size:12px;line-height:1.6">Inbound enquiries scored against client profile and order volume. Qualified leads auto-assigned to the right relationship manager.</p><div class="tags" style="margin-top:.6rem"><span class="tag ctag">Lead scorer</span><span class="tag ctag">Inbound qualifier</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ REVOPS ============ -->
+<div id="svc-revops" style="border-top:0.5px solid var(--br)">
+  <div class="svc-section">
+    <p class="ey">03 &mdash; RevOps strategy</p>
+    <div class="svc-header">
+      <div>
+        <h2 class="h2">RevOps strategy</h2>
+        <p class="sub">A CRM is only as good as the data model and process behind it. RevOps strategy aligns your sales and marketing teams around a shared pipeline &mdash; clean attribution, accurate forecasting, and dashboards that tell the truth.</p>
+        <a class="bp" href="contact.html">Discuss RevOps &#8599;</a>
+      </div>
+      <div>
+        <p style="font-size:11px;font-weight:500;color:var(--mu);margin-bottom:.65rem;letter-spacing:.5px">What RevOps strategy covers</p>
+        <div class="check-list">
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>ICP definition and GTM motion design</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Pipeline stage and lifecycle stage mapping</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Attribution modelling &mdash; first, last, and multi-touch</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Forecasting model and pipeline hygiene rules</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>KPI dashboard and reporting framework</div>
+          <div class="chk-item"><div class="chk" aria-hidden="true"><i class="ti ti-check" style="font-size:9px"></i></div>Sales and marketing alignment</div>
+        </div>
+      </div>
+    </div>
+    <div class="ro-g">
+      <div class="ro-c"><div class="ro-n">01</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">One source of truth</h3><p style="font-size:12px;line-height:1.6">Sales, marketing, and CS working from the same CRM data model &mdash; no more spreadsheet reconciliations.</p></div>
+      <div class="ro-c"><div class="ro-n">02</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Clean attribution</h3><p style="font-size:12px;line-height:1.6">Know exactly which channels and campaigns are driving pipeline &mdash; not just traffic.</p></div>
+      <div class="ro-c"><div class="ro-n">03</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Accurate forecasting</h3><p style="font-size:12px;line-height:1.6">Stage-based probability models and pipeline health scoring so your forecast reflects reality.</p></div>
+      <div class="ro-c"><div class="ro-n">04</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Reporting that works</h3><p style="font-size:12px;line-height:1.6">Dashboards built for the decisions you actually need to make &mdash; not a default template.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PLATFORMS ============ -->
+<div id="svc-platforms" style="border-top:0.5px solid var(--br);scroll-margin-top:115px">
+  <div class="band">
+    <div class="band-in">
+      <p class="ey">04 &mdash; Platforms</p>
+      <h2 class="h2" style="margin-bottom:.4rem">Platform-agnostic. You choose the right tool.</h2>
+      <p style="font-size:13px;color:var(--mu);max-width:480px;margin-bottom:0">No vendor referral fees. We advise based on your needs, then implement with genuine depth across all six.</p>
+      <div class="plat-g" style="margin-top:1.5rem">
+        <div class="plat-c"><div class="plat-d"></div><div class="plat-n">HubSpot</div><div class="plat-t">CRM + marketing</div><div class="plat-u">Best for: inbound-led businesses, marketing-sales alignment</div></div>
+        <div class="plat-c"><div class="plat-d"></div><div class="plat-n">Salesforce</div><div class="plat-t">Enterprise CRM</div><div class="plat-u">Best for: complex data models, CPQ, Service Cloud, Litify</div></div>
+        <div class="plat-c"><div class="plat-d"></div><div class="plat-n">Pipedrive</div><div class="plat-t">Sales-first CRM</div><div class="plat-u">Best for: sales teams wanting fast deployment and high adoption</div></div>
+        <div class="plat-c"><div class="plat-d"></div><div class="plat-n">Zoho CRM</div><div class="plat-t">Flexible + affordable</div><div class="plat-u">Best for: budget-conscious businesses needing customisation</div></div>
+        <div class="plat-c"><div class="plat-d"></div><div class="plat-n">Make.com</div><div class="plat-t">Automation layer</div><div class="plat-u">Most AI agent workflows. Fast, excellent CRM connectors.</div></div>
+        <div class="plat-c"><div class="plat-d"></div><div class="plat-n">n8n</div><div class="plat-t">Advanced automation</div><div class="plat-u">Complex branching logic, GDPR data residency, self-hosted.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PRICING ============ -->
+<div id="svc-pricing" style="border-top:0.5px solid var(--br)">
+  <div class="svc-section">
+    <p class="ey">05 &mdash; Pricing</p>
+    <h2 class="h2" style="margin-bottom:.4rem">Honest, scoped-to-fit pricing</h2>
+    <p class="sub" style="max-width:540px">Every project is scoped before a price is agreed. Every quote includes a breakdown of what's in scope, what's excluded, and what would trigger additional cost.</p>
+    <div class="price-g">
+      <div class="price-c">
+        <div class="ptier">AI readiness audit</div>
+        <div class="pamt">&pound;75</div>
+        <p class="pdesc">A structured review of your CRM and automation setup. Honest written findings on what's working, what isn't, and where AI could make a difference.</p>
+        <div class="pitems">
+          <div class="pi"><div class="pid"></div>CRM health and pipeline review</div>
+          <div class="pi"><div class="pid"></div>Automation gap assessment</div>
+          <div class="pi"><div class="pid"></div>Platform fit recommendation</div>
+          <div class="pi"><div class="pid"></div>Written findings within 48hrs</div>
+        </div>
+        <div class="pnote">If your setup is already in good shape, we'll tell you that too.</div>
+        <a class="bg" style="width:100%;text-align:center;display:block;margin-top:.85rem" href="ai-readiness-audit.html">Learn more &amp; book &#8599;</a>
+      </div>
+      <div class="price-c feat">
+        <div class="pbadge">Most common starting point</div>
+        <div class="ptier">CRM implementation</div>
+        <div class="pamt">From &pound;3,500 <span>scoped per project</span></div>
+        <p class="pdesc">Strategy, architecture, configuration, workflows, and team training. Complex builds scoped and quoted separately.</p>
+        <div class="pitems">
+          <div class="pi"><div class="pid"></div>Strategy document and architecture design</div>
+          <div class="pi"><div class="pid"></div>Pipeline, property, and workflow build</div>
+          <div class="pi"><div class="pid"></div>Email and calendar integration</div>
+          <div class="pi"><div class="pid"></div>Team training and handover documentation</div>
+        </div>
+        <div class="pnote">Every project scoped before price agreed &mdash; you'll always know what's included.</div>
+      </div>
+      <div class="price-c">
+        <div class="ptier">Ongoing support retainer</div>
+        <div class="pamt">From &pound;800 <span>/month</span></div>
+        <p class="pdesc">Flexible monthly access to senior CRM and AI expertise &mdash; admin, optimisation, new automations, and troubleshooting.</p>
+        <div class="pitems">
+          <div class="pi"><div class="pid"></div>Defined monthly hours, no lock-in</div>
+          <div class="pi"><div class="pid"></div>CRM admin and workflow updates</div>
+          <div class="pi"><div class="pid"></div>New automation and agent builds</div>
+          <div class="pi"><div class="pid"></div>Priority response for urgent issues</div>
+        </div>
+        <div class="pnote">Scope and hours agreed upfront each month.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="border-top:0.5px solid var(--br)"><div class="foot">
+  <div><div class="logo">Windex<span style="color:var(--cy)">Tech</span></div></div>
+  <div class="flinks">
+    <a href="index.html">Home</a>
+    <a href="case-studies.html">Case studies</a>
+    <a href="contact.html">Contact</a>
+    <a href="about.html">About us</a>
+  </div>
+  <div style="font-size:10px;color:var(--mu)">&copy; 2026 WindexTech Ltd</div>
+</div></div>
+
+<script>
+// highlight active anchor-nav tab on scroll
+const sections = ['svc-crm','svc-ai','svc-revops','svc-platforms','svc-pricing'].map(id=>document.getElementById(id));
+const tabs = document.querySelectorAll('.stab');
+function setActiveTab(){
+  let current = sections[0].id;
+  for(const sec of sections){
+    if(sec.getBoundingClientRect().top - 130 <= 0) current = sec.id;
+  }
+  tabs.forEach(t=>{
+    t.classList.toggle('active', t.getAttribute('href') === '#'+current);
+  });
+}
+window.addEventListener('scroll', setActiveTab);
+setActiveTab();
+</script>
+
+
+<script id="mobile-nav-js">
+(function(){
+  var nav=document.querySelector('.nav');if(!nav)return;
+  var links=nav.querySelector('.nl');if(!links)return;
+  // build hamburger
+  var btn=document.createElement('button');
+  btn.className='nav-toggle';btn.setAttribute('aria-label','Menu');btn.setAttribute('aria-expanded','false');
+  btn.innerHTML='<span></span><span></span><span></span>';
+  // backdrop
+  var bd=document.createElement('div');bd.className='nav-backdrop';
+  document.body.appendChild(bd);
+  // insert button as last child of nav so it sits at the right
+  nav.appendChild(btn);
+  function close(){links.classList.remove('open');btn.classList.remove('open');bd.classList.remove('show');btn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  function open(){links.classList.add('open');btn.classList.add('open');bd.classList.add('show');btn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  btn.addEventListener('click',function(){links.classList.contains('open')?close():open();});
+  bd.addEventListener('click',close);
+  links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+  window.addEventListener('resize',function(){if(window.innerWidth>860)close();});
+})();
+</script>
+</body>
+</html>

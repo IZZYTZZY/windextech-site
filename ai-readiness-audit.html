@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free HubSpot AI Readiness Report | WindexTech</title>
+<meta name="description" content="Get your full HubSpot AI readiness report, completely free. Scored across 10 dimensions against verified HubSpot benchmarks, with findings, a 30/60/90 day plan, and a downloadable PDF.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.35.0/tabler-icons.min.css">
+<style>
+/* ============================================
+   WindexTech — shared stylesheet
+   ============================================ */
+
+:root{
+  --n:#0B1628;
+  --nc:#0f1e38;
+  --nd:#142240;
+  --cy:#00C6A2;
+  --cyd:#00a688;
+  --mu:rgba(255,255,255,0.55);
+  --br:rgba(255,255,255,0.09);
+  --cb:rgba(255,255,255,0.04);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--n);color:#fff;overflow-x:hidden}
+body{font-family:var(--font-sans);font-size:14px;line-height:1.6;min-height:100vh}
+h1,h2,h3,h4,h5,h6,p,span,div,li,label{color:inherit}
+img{max-width:100%;display:block}
+a{text-decoration:none}
+
+button{appearance:none;-webkit-appearance:none;-moz-appearance:none;font-family:inherit;border:none;outline:none;cursor:pointer}
+
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* ---------- nav ---------- */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:58px;border-bottom:0.5px solid var(--br);background:var(--n);position:sticky;top:0;z-index:50}
+.logo{font-size:16px;font-weight:500;letter-spacing:-0.3px;cursor:pointer;color:#fff}
+.logo span{color:var(--cy)}
+.nl{display:flex;gap:1.5rem;font-size:13px;color:var(--mu)}
+.nl a{cursor:pointer;padding:4px 0;border-bottom:1.5px solid transparent;transition:color .15s;color:var(--mu)}
+.nl a:hover{color:#fff}
+.nl a.active{color:#fff;border-bottom-color:var(--cy)}
+.nbtn{background-color:#00C6A2!important;color:#0B1628!important;font-size:12px;font-weight:500;padding:7px 15px;border-radius:6px;border:none}
+.nbtn:hover{background-color:#00a688!important}
+
+/* ---------- generic helpers ---------- */
+.ey{font-size:10px;font-weight:500;color:var(--cy)!important;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.6rem}
+.hdiv{border:none;border-top:0.5px solid var(--br)}
+.bp{background-color:#00C6A2!important;color:#0B1628!important;font-size:12px;font-weight:500;padding:9px 18px;border-radius:6px;border:none;display:inline-block}
+.bp:hover{background-color:#00a688!important}
+.bg{background-color:transparent!important;color:#ffffff!important;font-size:12px;padding:9px 18px;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);display:inline-block}
+.bg:hover{border-color:rgba(255,255,255,0.4)}
+.sec{padding:2.5rem 2rem;max-width:1040px;margin:0 auto}
+.h2{font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-.4px;line-height:1.2;margin-bottom:.55rem;color:#fff!important}
+.sub{font-size:13px;color:var(--mu)!important;line-height:1.8;margin-bottom:1.5rem}
+.band{background:var(--nc);border-top:0.5px solid var(--br);border-bottom:0.5px solid var(--br);padding:2.5rem 2rem}
+.band-in{max-width:1040px;margin:0 auto}
+.tbar{border-top:0.5px solid var(--br);border-bottom:0.5px solid var(--br);overflow:hidden}
+.tbar-in{max-width:1040px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.tbar-in::-webkit-scrollbar{display:none}
+.tbar-in .tlbl{position:sticky;left:0;background:var(--n);padding-right:.5rem}
+.tlbl{font-size:10px;font-weight:500;color:var(--mu)!important;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+.tlog{font-size:12px;font-weight:500;color:rgba(255,255,255,0.28)!important}
+.foot{padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--mu)!important;max-width:1040px;margin:0 auto;flex-wrap:wrap;gap:.75rem;border-top:0.5px solid var(--br)}
+.flinks{display:flex;gap:1.25rem}
+.flinks a{color:var(--mu)!important;cursor:pointer}
+.flinks a:hover{color:#fff!important}
+.tag{font-size:10px;padding:2px 6px;background:rgba(255,255,255,0.05);border-radius:3px;color:rgba(255,255,255,0.45)!important}
+.ctag{background:rgba(0,198,162,0.08);color:var(--cy)!important}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:.55rem}
+.card{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1rem;transition:border-color .15s;color:#fff}
+.card:hover{border-color:rgba(0,198,162,0.28)}
+.card h3,.agent-c h3,.uc-c h3,.ro-c h3,.flow-c h3,.cs-name,.cs-bc h3{color:#fff!important}
+.card p,.agent-c p,.uc-c p,.ro-c p,.flow-c p{color:var(--mu)!important}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}
+.ic{width:34px;height:34px;background:rgba(0,198,162,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--cy)!important;margin-bottom:.75rem}
+
+/* ---------- hero ---------- */
+.hero-g{display:grid;grid-template-columns:1fr 360px;gap:3rem;align-items:start;padding:3.5rem 2rem 2.5rem;max-width:1040px;margin:0 auto}
+.h1{font-size:clamp(26px,3.5vw,46px);font-weight:500;line-height:1.12;letter-spacing:-1px;margin-bottom:1rem;color:#fff!important}
+.h1 em{color:var(--cy)!important;font-style:normal}
+.hacts{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:1.75rem}
+.hstats{display:flex;gap:1.75rem;padding-top:1.25rem;border-top:0.5px solid var(--br)}
+.hstat .n{font-size:20px;font-weight:500;color:#fff!important}
+.hstat .l{font-size:10px;color:var(--mu)!important;margin-top:1px}
+.hcard{background:var(--nd);border:0.5px solid var(--br);border-radius:11px;padding:1.2rem;color:#fff}
+.hcard-lbl{font-size:10px;font-weight:500;color:var(--cy)!important;letter-spacing:1px;text-transform:uppercase;margin-bottom:.8rem}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.ppill{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.09);border-radius:6px;padding:6px 7px;text-align:center;font-size:11px;font-weight:500;color:rgba(255,255,255,0.6)!important}
+.ppill:hover{background:rgba(0,198,162,0.1);border-color:rgba(0,198,162,0.3);color:var(--cy)!important}
+.hcdiv{border:none;border-top:0.5px solid var(--br);margin:.85rem 0}
+
+/* ---------- score preview (signature element) ---------- */
+.score-preview{display:flex;align-items:center;gap:1rem;margin-bottom:.9rem}
+.score-ring{width:78px;height:78px;min-width:78px;border-radius:50%;border:3px solid var(--cy);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-ring .num{font-size:26px;font-weight:600;color:#fff;line-height:1}
+.score-ring .den{font-size:9px;color:var(--mu);margin-top:1px}
+.score-meta .tier{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;background:rgba(0,198,162,0.15);color:var(--cy)!important;border-radius:4px;margin-bottom:.4rem;letter-spacing:.5px}
+.score-meta .portal{font-size:12px;color:var(--mu)}
+.score-divider{border:none;border-top:0.5px solid var(--br);margin:.9rem 0}
+.score-finding{font-size:11px;color:rgba(255,255,255,0.6);line-height:1.6;margin-bottom:.85rem}
+.score-finding strong{color:#fff}
+.score-example{font-size:10px;color:rgba(255,255,255,0.35);text-align:center;margin-top:.75rem}
+
+/* ---------- services anchor nav (unused here, kept for consistency) ---------- */
+.svc-anav{background:var(--nc);border-bottom:0.5px solid var(--br);padding:0 2rem;position:sticky;top:58px;z-index:40}
+.svc-anav-in{max-width:1040px;margin:0 auto;display:flex;gap:0;overflow-x:auto}
+.stab{font-size:12px;font-weight:500;color:var(--mu)!important;padding:.75rem 1.1rem;border-bottom:2px solid transparent;white-space:nowrap;background:transparent!important;border-top:none;border-left:none;border-right:none;transition:color .15s,border-color .15s;text-decoration:none}
+.stab:hover{color:#fff!important}
+.stab.active{color:var(--cy)!important;border-bottom-color:var(--cy)}
+.svc-section{padding:2.5rem 2rem;max-width:1040px;margin:0 auto;scroll-margin-top:115px}
+.svc-header{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin-bottom:2rem}
+.check-list{display:flex;flex-direction:column;gap:.4rem}
+.chk-item{font-size:12px;color:rgba(255,255,255,0.72)!important;display:flex;align-items:center;gap:.55rem}
+.chk{width:15px;height:15px;min-width:15px;background:rgba(0,198,162,0.12);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--cy)!important}
+
+/* ---------- agent cards ---------- */
+.agents-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.agent-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1.1rem;transition:border-color .15s;color:#fff}
+.agent-c:hover{border-color:rgba(0,198,162,0.3)}
+.agent-ic{width:36px;height:36px;background:rgba(0,198,162,0.1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--cy)!important;margin-bottom:.7rem}
+.agent-num{font-size:10px;font-weight:500;color:var(--cy)!important;letter-spacing:1px;text-transform:uppercase;margin-bottom:.35rem}
+
+/* ---------- tier scale ---------- */
+.tier-scale{display:flex;border-radius:9px;overflow:hidden;border:0.5px solid var(--br)}
+.tier-seg{flex:1;padding:.75rem .6rem;text-align:center}
+.tier-seg span{display:block;font-size:11px;font-weight:500;color:#fff!important}
+.tier-seg small{display:block;font-size:10px;color:rgba(255,255,255,0.55)!important;margin-top:2px;font-family:monospace}
+.tier-1{background:rgba(255,255,255,0.04)}
+.tier-2{background:rgba(0,198,162,0.12)}
+.tier-3{background:rgba(0,198,162,0.26)}
+.tier-4{background:rgba(0,198,162,0.45)}
+
+/* ---------- dimension grid ---------- */
+.dim-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem .75rem}
+.dim-item{display:flex;align-items:center;gap:.6rem;font-size:12.5px;color:rgba(255,255,255,0.78)!important;padding:.6rem .8rem;background:var(--cb);border:0.5px solid var(--br);border-radius:7px}
+.dim-n{font-size:10px;font-family:monospace;color:var(--cy)!important;font-weight:600;min-width:18px}
+
+/* ---------- path forward ---------- */
+.path-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.25rem}
+.path-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1rem;color:#fff}
+.path-days{font-size:10px;font-weight:600;color:var(--cy)!important;letter-spacing:1px;margin-bottom:.5rem;font-family:monospace}
+.path-shift{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.path-tag{font-size:11px;font-weight:700;font-family:monospace;padding:4px 12px;border-radius:20px}
+.path-from{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7)!important}
+.path-to{background:rgba(0,198,162,0.18);color:var(--cy)!important}
+.path-arrow{color:var(--cy)!important;font-size:14px}
+.path-note{font-size:11px;color:var(--mu)!important;margin-left:.25rem}
+
+/* ---------- report preview ---------- */
+.preview-g{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.preview-img{text-align:center}
+.preview-img img{max-width:300px;width:100%;height:auto}
+.preview-caption{font-size:11px;color:rgba(255,255,255,0.35)!important;margin-top:1rem;text-align:center}
+
+/* ---------- contact / call CTA ---------- */
+.contact-g{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1040px;margin:0 auto;padding:2.5rem 2rem}
+.cform{background:var(--nd);border:0.5px solid var(--br);border-radius:11px;padding:1.75rem;color:#fff}
+.cform h2{font-size:20px;font-weight:500;margin-bottom:.5rem;color:#fff!important}
+.cform p{font-size:12px;color:var(--mu)!important;margin-bottom:1.5rem;line-height:1.7}
+.ci-item{display:flex;align-items:flex-start;gap:.65rem;background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:.85rem 1rem;margin-bottom:.75rem;color:#fff}
+.ci-icon{width:30px;height:30px;min-width:30px;background:rgba(0,198,162,0.1);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--cy)!important}
+.ci-item h4{font-size:12px;font-weight:500;margin-bottom:2px;color:#fff!important}
+.ci-item p{font-size:11px;color:var(--mu)!important}
+.faq-l{display:flex;flex-direction:column}
+.faq-i{border-bottom:0.5px solid var(--br);padding:.9rem 0}
+.fq{font-size:13px;font-weight:500;margin-bottom:.3rem;color:#fff!important}
+.fa{font-size:12px;color:var(--mu)!important;line-height:1.65}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 860px){
+  .hero-g{grid-template-columns:1fr;gap:1.5rem}
+  .g3,.g4,.agents-g,.uc-g,.price-g{grid-template-columns:repeat(2,1fr)}
+  .contact-g{grid-template-columns:1fr}
+  .path-g{grid-template-columns:1fr}
+  .preview-g{grid-template-columns:1fr;text-align:center}
+  .preview-g .sub,.preview-g .check-list{margin-left:auto;margin-right:auto}
+  .preview-g .check-list{align-items:center}
+  .nl{display:none}
+}
+@media (max-width: 540px){
+  .g3,.g4,.agents-g,.uc-g,.price-g,.pgrid,.dim-grid{grid-template-columns:1fr}
+  .hero-g,.sec,.svc-section,.band,.contact-g{padding-left:1.25rem;padding-right:1.25rem}
+  .nav{padding:0 1.25rem}
+  .score-preview{flex-direction:column;align-items:flex-start;text-align:left}
+  .tier-scale{flex-wrap:wrap}
+  .tier-seg{flex:1 1 50%}
+}
+
+</style>
+
+<style id="mobile-nav-fix">
+/* --- Hamburger button --- */
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;width:38px;height:38px;flex-direction:column;justify-content:center;gap:5px;z-index:1001}
+.nav-toggle span{display:block;height:2px;width:22px;background:#fff;border-radius:2px;transition:transform .25s ease,opacity .25s ease}
+.nav-toggle.open span{background:#fff}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999}
+.nav-backdrop.show{display:block}
+@media (max-width: 860px){
+  .nav{position:relative}
+  .nav-toggle{display:flex}
+  .nl{
+    display:flex !important;flex-direction:column;align-items:flex-start;gap:0;
+    position:fixed;top:0;right:0;height:100vh;width:min(80vw,300px);
+    background:#0B1628;box-shadow:-8px 0 30px rgba(0,0,0,.4);
+    padding:84px 26px 26px;z-index:1000;
+    transform:translateX(105%);transition:transform .3s ease;overflow-y:auto
+  }
+  .nl.open{transform:translateX(0)}
+  .nl a{width:100%;padding:15px 0;font-size:16px;color:#fff !important;border-bottom:.5px solid rgba(255,255,255,.1)}
+  .nl a.active{color:#00C6A2 !important}
+  .nav .nbtn{margin-left:auto;margin-right:12px}
+}
+@media (max-width: 540px){
+  .nav .nbtn{display:none}
+  .nl{width:84vw}
+}
+@media (max-width: 860px){
+  html,body{overflow-x:hidden;max-width:100%}
+  img{max-width:100%;height:auto}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="logo" href="index.html">Windex<span>Tech</span></a>
+  <div class="nl">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="case-studies.html">Case studies</a>
+    <a href="ai-readiness-audit.html" class="active">AI Readiness Audit</a>
+    <a href="contact.html">Contact</a>
+    <a href="about.html">About us</a>
+  </div>
+  <a class="nbtn" href="#score">Get my free report</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero-g">
+  <div>
+    <p class="ey">Free &middot; Full Report &middot; HubSpot</p>
+    <h1 class="h1">Is your HubSpot<br>portal ready for <em>AI</em>?</h1>
+    <p style="font-size:14px;color:var(--mu);max-width:440px;margin-bottom:1.5rem;line-height:1.8">Run a free scan of your HubSpot portal across 10 dimensions. Get your composite score, every finding and recommendation, a 30/60/90 day plan, and a downloadable PDF &mdash; the complete report, free, no card required.</p>
+    <div class="hacts">
+      <a class="bp" id="score" href="https://audit.windextech.co.uk" target="_blank">Get my free report &#8599;</a>
+      <a class="bg" href="#included">See what's included</a>
+    </div>
+    <div class="hstats">
+      <div class="hstat"><div class="n">Free</div><div class="l">Full report, always</div></div>
+      <div class="hstat"><div class="n">10</div><div class="l">Dimensions scored</div></div>
+      <div class="hstat"><div class="n">0</div><div class="l">Cards required</div></div>
+    </div>
+  </div>
+  <div class="hcard">
+    <p class="hcard-lbl">What's in your report</p>
+    <div class="score-preview">
+      <div class="score-ring"><div class="num">47</div><div class="den">/ 100</div></div>
+      <div class="score-meta">
+        <div class="tier">STABILIZE</div>
+        <div class="portal">Example HubSpot portal</div>
+      </div>
+    </div>
+    <hr class="score-divider">
+    <div class="score-finding"><strong>Top finding:</strong> 0% of contacts are linked to a company record &mdash; this blocks every Breeze AI enrichment and personalisation feature until resolved.</div>
+    <div class="pgrid">
+      <div class="ppill">49% Email</div>
+      <div class="ppill">0% Company</div>
+      <div class="ppill">71 Workflows</div>
+    </div>
+    <p class="score-example">Real output from a HubSpot portal &mdash; yours will be different</p>
+  </div>
+</div>
+
+<div class="tbar">
+  <div class="tbar-in">
+  <span class="tlbl">Trusted by</span>
+  <span class="tlog">Jibble</span><span class="tlog">Trint</span><span class="tlog">OP Agency</span>
+  <span class="tlog">KP Law</span><span class="tlog">Measure Protocol</span><span class="tlog">CREW Saudi Arabia</span>
+  <span class="tlog">Instinct Digital</span><span class="tlog">SMS Highway</span><span class="tlog">BBR</span>
+  </div>
+</div>
+<hr class="hdiv">
+
+<!-- REAL FINDINGS -->
+<div class="sec">
+  <p class="ey">From a real audit</p>
+  <h2 class="h2">This is what the report actually sounds like</h2>
+  <p class="sub" style="max-width:560px">Not a generic checklist. Every finding is specific to your portal, with the AI consequence spelled out in plain terms.</p>
+  <div class="g3">
+    <div class="card">
+      <p class="ey" style="margin-bottom:.5rem">D01 &middot; Contact Data</p>
+      <h3 style="font-size:14px;font-weight:500;margin-bottom:.4rem;line-height:1.4">49% of contacts have a verified email address.</h3>
+      <p style="font-size:12px;line-height:1.65">Half the contact base is invisible to AI personalisation, outreach, and predictive scoring &mdash; the core use cases the platform was bought for.</p>
+    </div>
+    <div class="card">
+      <p class="ey" style="margin-bottom:.5rem">D02 &middot; Company Data</p>
+      <h3 style="font-size:14px;font-weight:500;margin-bottom:.4rem;line-height:1.4">0 companies exist across 457,000 contacts.</h3>
+      <p style="font-size:12px;line-height:1.65">Every Breeze enrichment feature needs a company record to enrich against. Right now, none of them have one.</p>
+    </div>
+    <div class="card">
+      <p class="ey" style="margin-bottom:.5rem">D07 &middot; AI Activation Readiness</p>
+      <h3 style="font-size:14px;font-weight:500;margin-bottom:.4rem;line-height:1.4">Activation readiness score: 15 / 100.</h3>
+      <p style="font-size:12px;line-height:1.65">Three compounding gaps mean switching on Breeze AI today wouldn't accelerate this portal &mdash; it would amplify the gaps at machine speed.</p>
+    </div>
+  </div>
+  <p style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:1rem">Anonymised findings from a real HubSpot portal audit.</p>
+</div>
+<hr class="hdiv">
+
+<!-- WHO IT'S FOR -->
+<div class="sec">
+  <p class="ey">Who it's for</p>
+  <h2 class="h2">Built for HubSpot portals at an AI crossroads</h2>
+  <p class="sub" style="max-width:560px">If any of this sounds familiar, your free report will show you exactly where the gaps are &mdash; across 10 dimensions.</p>
+  <div class="g3">
+    <div class="card">
+      <div class="ic" aria-hidden="true"><i class="ti ti-clock"></i></div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.35rem">Your CRM has become admin overhead</h3>
+      <p style="font-size:12px;line-height:1.6">Your team spends more time updating records than talking to prospects and customers.</p>
+    </div>
+    <div class="card">
+      <div class="ic" aria-hidden="true"><i class="ti ti-robot"></i></div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.35rem">You know AI could help, but not where to start</h3>
+      <p style="font-size:12px;line-height:1.6">Everyone's talking about AI agents &mdash; nobody's shown you what one looks like inside your actual portal.</p>
+    </div>
+    <div class="card">
+      <div class="ic" aria-hidden="true"><i class="ti ti-trending-up"></i></div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.35rem">You're scaling but process hasn't kept up</h3>
+      <p style="font-size:12px;line-height:1.6">Lead volume is growing faster than your team's ability to qualify and respond to it manually.</p>
+    </div>
+    <div class="card">
+      <div class="ic" aria-hidden="true"><i class="ti ti-database-import"></i></div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.35rem">You inherited a portal you didn't build</h3>
+      <p style="font-size:12px;line-height:1.6">Years of legacy fields, dead automations, and "we've always done it that way" &mdash; nobody's sure what's actually used.</p>
+    </div>
+    <div class="card">
+      <div class="ic" aria-hidden="true"><i class="ti ti-toggle-left"></i></div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.35rem">Breeze AI sits there, switched off</h3>
+      <p style="font-size:12px;line-height:1.6">It's included in your plan &mdash; but dormant, unconfigured, and not delivering any value yet.</p>
+    </div>
+    <div class="card">
+      <div class="ic" aria-hidden="true"><i class="ti ti-chart-bar"></i></div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.35rem">You want proof before you invest</h3>
+      <p style="font-size:12px;line-height:1.6">Before spending on AI agents or a bigger CRM project, you want a data-backed picture of where you stand today.</p>
+    </div>
+  </div>
+</div>
+<hr class="hdiv">
+
+<!-- FRAMEWORK -->
+<div class="sec">
+  <p class="ey">The framework</p>
+  <h2 class="h2">10 dimensions. One composite score.</h2>
+  <p class="sub" style="max-width:560px">Every dimension is weighted and benchmarked against HubSpot's official guidance and verified industry sources. Foundational dimensions count for more &mdash; everything downstream inherits their integrity.</p>
+
+  <div class="tier-scale">
+    <div class="tier-seg tier-1"><span>Foundation Gap</span><small>0&ndash;39</small></div>
+    <div class="tier-seg tier-2"><span>Stabilize</span><small>40&ndash;59</small></div>
+    <div class="tier-seg tier-3"><span>Optimize</span><small>60&ndash;79</small></div>
+    <div class="tier-seg tier-4"><span>Activate</span><small>80&ndash;100</small></div>
+  </div>
+  <p style="font-size:11px;color:rgba(255,255,255,0.35);margin:.6rem 0 1.5rem">Most first-time scans land in Foundation Gap or Stabilize &mdash; that's normal, and exactly what the report is for.</p>
+
+  <div class="dim-grid">
+    <div class="dim-item"><span class="dim-n">01</span>Contact Data Foundation</div>
+    <div class="dim-item"><span class="dim-n">02</span>Company Data &amp; Enrichment</div>
+    <div class="dim-item"><span class="dim-n">03</span>Marketing Hub AI Readiness</div>
+    <div class="dim-item"><span class="dim-n">04</span>Sales Hub AI Readiness</div>
+    <div class="dim-item"><span class="dim-n">05</span>Service Hub AI Readiness</div>
+    <div class="dim-item"><span class="dim-n">06</span>Workflow &amp; Automation Governance</div>
+    <div class="dim-item"><span class="dim-n">07</span>CRM AI Activation Readiness</div>
+    <div class="dim-item"><span class="dim-n">08</span>Pipeline &amp; Deal Data Hygiene</div>
+    <div class="dim-item"><span class="dim-n">09</span>Reporting &amp; Forecasting</div>
+    <div class="dim-item"><span class="dim-n">10</span>Governance, Permissions &amp; Security</div>
+  </div>
+</div>
+<hr class="hdiv">
+
+<!-- WHAT'S INCLUDED (FREE) -->
+<div class="sec" id="included">
+  <p class="ey">What's included &mdash; all free</p>
+  <h2 class="h2">Your full HubSpot AI readiness report</h2>
+  <p class="sub" style="max-width:560px">No payment, no obligation, nothing held back. Paste a read-only token and get the complete report from your own portal.</p>
+  <div class="agents-g">
+    <div class="agent-c">
+      <div class="agent-ic" aria-hidden="true"><i class="ti ti-gauge"></i></div>
+      <div class="agent-num">01</div>
+      <h3>Your composite AI readiness score</h3>
+      <p style="font-size:12px;line-height:1.65">A score out of 100, weighted across 10 dimensions and benchmarked against HubSpot's official guidance and verified industry sources.</p>
+    </div>
+    <div class="agent-c">
+      <div class="agent-ic" aria-hidden="true"><i class="ti ti-stairs"></i></div>
+      <div class="agent-num">02</div>
+      <h3>Your readiness tier</h3>
+      <p style="font-size:12px;line-height:1.65">Foundation Gap, Stabilize, Optimize, or Activate &mdash; so you know exactly where you stand before touching any AI feature.</p>
+    </div>
+    <div class="agent-c">
+      <div class="agent-ic" aria-hidden="true"><i class="ti ti-list-check"></i></div>
+      <div class="agent-num">03</div>
+      <h3>All 10 dimension findings</h3>
+      <p style="font-size:12px;line-height:1.65">Every dimension scored, with a plain-English finding and a HubSpot-verified recommendation &mdash; not just a summary.</p>
+    </div>
+    <div class="agent-c">
+      <div class="agent-ic" aria-hidden="true"><i class="ti ti-route"></i></div>
+      <div class="agent-num">04</div>
+      <h3>30/60/90 day remediation plan</h3>
+      <p style="font-size:12px;line-height:1.65">A sequenced plan with task owners and effort estimates &mdash; what to fix first, second, and third.</p>
+    </div>
+    <div class="agent-c">
+      <div class="agent-ic" aria-hidden="true"><i class="ti ti-clipboard-check"></i></div>
+      <div class="agent-num">05</div>
+      <h3>Manual review checklist</h3>
+      <p style="font-size:12px;line-height:1.65">12 items that need a human look inside HubSpot, with exactly where to find them and why they matter.</p>
+    </div>
+    <div class="agent-c">
+      <div class="agent-ic" aria-hidden="true"><i class="ti ti-file-download"></i></div>
+      <div class="agent-num">06</div>
+      <h3>Downloadable PDF report</h3>
+      <p style="font-size:12px;line-height:1.65">Everything above, in one document you can share with your team &mdash; yours to keep, with or without us.</p>
+    </div>
+  </div>
+</div>
+<hr class="hdiv">
+
+<hr class="hdiv">
+
+<!-- REPORT PREVIEW -->
+<div class="sec">
+  <div class="preview-g">
+    <div>
+      <p class="ey">See it for yourself</p>
+      <h2 class="h2">This is the actual report</h2>
+      <p class="sub" style="max-width:440px">Not a mockup. This cover is generated directly from a real HubSpot portal's data &mdash; the same branded PDF you'll download, with your own score, tier, and findings.</p>
+      <div class="check-list">
+        <div class="chk-item"><div class="chk">&check;</div>Composite score and tier on the cover</div>
+        <div class="chk-item"><div class="chk">&check;</div>Critical / at-risk / on-track breakdown</div>
+        <div class="chk-item"><div class="chk">&check;</div>Branded, shareable PDF &mdash; yours to keep</div>
+      </div>
+    </div>
+    <div class="preview-img">
+      <img src="img/report-preview.png" alt="WindexTech CRM AI Readiness Audit report cover, showing a composite score of 38 out of 100 and Foundation Gap tier">
+      <p class="preview-caption">Cover page from a real audit &mdash; yours will reflect your own portal</p>
+    </div>
+  </div>
+</div>
+<hr class="hdiv">
+
+<!-- PATH FORWARD -->
+<div class="sec">
+  <p class="ey">The path forward</p>
+  <h2 class="h2">From wherever you start, to Optimize</h2>
+  <p class="sub" style="max-width:560px">The report doesn't stop at the score &mdash; it includes a sequenced plan to move through the tiers.</p>
+  <div class="path-g">
+    <div class="path-c">
+      <div class="path-days">DAYS 1&ndash;30</div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Stabilise the Foundation</h3>
+      <p style="font-size:12px;line-height:1.6">Fix the data-quality blockers that compound across every other dimension.</p>
+    </div>
+    <div class="path-c">
+      <div class="path-days">DAYS 30&ndash;60</div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Govern and Document</h3>
+      <p style="font-size:12px;line-height:1.6">Close the at-risk gaps and put governance around workflows and access.</p>
+    </div>
+    <div class="path-c">
+      <div class="path-days">DAYS 60&ndash;90</div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Activate AI Deliberately</h3>
+      <p style="font-size:12px;line-height:1.6">Switch on Breeze AI features in the sequence HubSpot recommends &mdash; against a clean foundation.</p>
+    </div>
+  </div>
+  <div class="path-shift">
+    <span class="path-tag path-from">STABILIZE</span>
+    <span class="path-arrow">&rarr;</span>
+    <span class="path-tag path-to">OPTIMIZE</span>
+    <span class="path-note">typical movement over 90 days, following the plan in your report</span>
+  </div>
+</div>
+<hr class="hdiv">
+
+<!-- BOOK A CALL -->
+<div class="contact-g">
+  <div class="cform">
+    <h2>Not on HubSpot, or want to talk it through?</h2>
+    <p>If you're on a different CRM, weighing up a switch, or just want to talk through your results with someone &mdash; grab 15 minutes. No pitch, no obligation.</p>
+    <a class="bp" style="width:100%;padding:11px;text-align:center;display:block;margin-bottom:.75rem" href="https://bookings.cloud.microsoft/bookwithme/user/28ae8cc6134d4f28996542321834fd8a@windextech.co.uk?anonymous&amp;ismsaljsauthenabled&amp;ep=bwmEmailSignature" target="_blank">Book a free 15-min call &#8599;</a>
+    <a class="bg" style="width:100%;padding:11px;text-align:center;display:block;box-sizing:border-box" href="https://audit.windextech.co.uk" target="_blank">Or get my free HubSpot report first</a>
+  </div>
+  <div>
+    <h3 style="font-size:clamp(18px,2.5vw,26px);font-weight:500;letter-spacing:-.3px;margin-bottom:.5rem;padding-top:.5rem;color:#fff">What we'll<br>cover on the call</h3>
+    <p style="font-size:13px;color:var(--mu);line-height:1.75;margin-bottom:1.25rem">A short, honest conversation &mdash; not a sales pitch.</p>
+    <div class="ci-item"><div class="ci-icon" aria-hidden="true"><i class="ti ti-puzzle"></i></div><div><h4>Your current setup</h4><p>What CRM you're using today, and how it's actually working for your team.</p></div></div>
+    <div class="ci-item"><div class="ci-icon" aria-hidden="true"><i class="ti ti-bulb"></i></div><div><h4>Where AI could help</h4><p>Specific, realistic opportunities &mdash; not generic "AI will transform your business" talk.</p></div></div>
+    <div class="ci-item"><div class="ci-icon" aria-hidden="true"><i class="ti ti-map"></i></div><div><h4>Honest next steps</h4><p>What we'd recommend doing first &mdash; with or without us.</p></div></div>
+    <p style="font-size:12px;color:var(--mu);margin-top:1.25rem">Prefer email? <a href="contact.html" style="color:var(--cy)">Get in touch &rarr;</a></p>
+  </div>
+</div>
+<hr class="hdiv">
+
+<!-- FAQ -->
+<div class="sec">
+  <p class="ey">FAQ</p>
+  <h2 class="h2">Common questions</h2>
+  <div class="faq-l">
+    <div class="faq-i"><div class="fq">Is the report really completely free?</div><div class="fa">Yes &mdash; the entire report. Your composite score, all 10 dimension findings and recommendations, the 30/60/90 day plan, the manual checklist, and the downloadable PDF. No payment details required, no hidden upgrade.</div></div>
+    <div class="faq-i"><div class="fq">How long does it take?</div><div class="fa">Most portals are scanned in a couple of minutes. Larger portals with very high contact volumes may take a little longer &mdash; you'll see progress as each check runs.</div></div>
+    <div class="faq-i"><div class="fq">Is my HubSpot data safe?</div><div class="fa">You create a read-only Private App token in your own HubSpot account and paste it directly into the tool. WindexTech never sees, stores, or logs your token or your portal data.</div></div>
+    <div class="faq-i"><div class="fq">Do I need technical knowledge to set this up?</div><div class="fa">No. Creating a token takes about 2 minutes, and we show you exactly which boxes to tick, step by step, inside the tool.</div></div>
+    <div class="faq-i"><div class="fq">What if I'm not on HubSpot?</div><div class="fa">The automated report currently covers HubSpot portals. If you're on another platform &mdash; or haven't picked one yet &mdash; book a free 15-minute call and we'll talk it through directly.</div></div>
+    <div class="faq-i"><div class="fq">Will you try to sell me something afterwards?</div><div class="fa">Your report is yours to use however you like &mdash; with or without us. If it's useful, you can book a free call to talk through next steps. No pressure either way.</div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="border-top:0.5px solid var(--br)"><div class="foot">
+  <div>
+    <div class="logo">Windex<span style="color:var(--cy)">Tech</span></div>
+    <div style="font-size:10px;color:var(--mu);margin-top:2px">CRM &amp; AI automation &middot; windextech.co.uk</div>
+  </div>
+  <div class="flinks">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="case-studies.html">Case studies</a>
+    <a href="contact.html">Contact</a>
+    <a href="about.html">About us</a>
+  </div>
+  <div style="font-size:10px;color:var(--mu)">&copy; 2026 WindexTech Ltd</div>
+</div></div>
+
+
+<script id="mobile-nav-js">
+(function(){
+  var nav=document.querySelector('.nav');if(!nav)return;
+  var links=nav.querySelector('.nl');if(!links)return;
+  // build hamburger
+  var btn=document.createElement('button');
+  btn.className='nav-toggle';btn.setAttribute('aria-label','Menu');btn.setAttribute('aria-expanded','false');
+  btn.innerHTML='<span></span><span></span><span></span>';
+  // backdrop
+  var bd=document.createElement('div');bd.className='nav-backdrop';
+  document.body.appendChild(bd);
+  // insert button as last child of nav so it sits at the right
+  nav.appendChild(btn);
+  function close(){links.classList.remove('open');btn.classList.remove('open');bd.classList.remove('show');btn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  function open(){links.classList.add('open');btn.classList.add('open');bd.classList.add('show');btn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  btn.addEventListener('click',function(){links.classList.contains('open')?close():open();});
+  bd.addEventListener('click',close);
+  links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+  window.addEventListener('resize',function(){if(window.innerWidth>860)close();});
+})();
+</script>
+</body>
+</html>

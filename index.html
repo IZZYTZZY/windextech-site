@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WindexTech | CRM Implementation, AI Automation &amp; RevOps</title>
+<meta name="description" content="WindexTech implements HubSpot, Salesforce, Pipedrive, and Zoho for businesses worldwide — then builds AI automation on top so your pipeline runs without manual effort.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.35.0/tabler-icons.min.css">
+<style>
+/* ============================================
+   WindexTech — shared stylesheet
+   ============================================ */
+
+:root{
+  --n:#0B1628;
+  --nc:#0f1e38;
+  --nd:#142240;
+  --cy:#00C6A2;
+  --cyd:#00a688;
+  --mu:rgba(255,255,255,0.55);
+  --br:rgba(255,255,255,0.09);
+  --cb:rgba(255,255,255,0.04);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--n);color:#fff;overflow-x:hidden}
+body{font-family:var(--font-sans);font-size:14px;line-height:1.6;min-height:100vh}
+h1,h2,h3,h4,h5,h6,p,span,div,li,label{color:inherit}
+img{max-width:100%;display:block}
+a{text-decoration:none}
+
+button{appearance:none;-webkit-appearance:none;-moz-appearance:none;font-family:inherit;border:none;outline:none;cursor:pointer}
+
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* ---------- nav ---------- */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:58px;border-bottom:0.5px solid var(--br);background:var(--n);position:sticky;top:0;z-index:50}
+.logo{font-size:16px;font-weight:500;letter-spacing:-0.3px;cursor:pointer;color:#fff}
+.logo span{color:var(--cy)}
+.nl{display:flex;gap:1.5rem;font-size:13px;color:var(--mu)}
+.nl a{cursor:pointer;padding:4px 0;border-bottom:1.5px solid transparent;transition:color .15s;color:var(--mu)}
+.nl a:hover{color:#fff}
+.nl a.active{color:#fff;border-bottom-color:var(--cy)}
+.nbtn{background-color:#00C6A2!important;color:#0B1628!important;font-size:12px;font-weight:500;padding:7px 15px;border-radius:6px;border:none}
+.nbtn:hover{background-color:#00a688!important}
+
+/* ---------- generic helpers ---------- */
+.ey{font-size:10px;font-weight:500;color:var(--cy)!important;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.6rem}
+.hdiv{border:none;border-top:0.5px solid var(--br)}
+.bp{background-color:#00C6A2!important;color:#0B1628!important;font-size:12px;font-weight:500;padding:9px 18px;border-radius:6px;border:none;display:inline-block}
+.bp:hover{background-color:#00a688!important}
+.bg{background-color:transparent!important;color:#ffffff!important;font-size:12px;padding:9px 18px;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);display:inline-block}
+.bg:hover{border-color:rgba(255,255,255,0.4)}
+.sec{padding:2.5rem 2rem;max-width:1040px;margin:0 auto}
+.h2{font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-.4px;line-height:1.2;margin-bottom:.55rem;color:#fff!important}
+.sub{font-size:13px;color:var(--mu)!important;line-height:1.8;margin-bottom:1.5rem}
+.band{background:var(--nc);border-top:0.5px solid var(--br);border-bottom:0.5px solid var(--br);padding:2.5rem 2rem}
+.band-in{max-width:1040px;margin:0 auto}
+.tbar{border-top:0.5px solid var(--br);border-bottom:0.5px solid var(--br);overflow:hidden}
+.tbar-in{max-width:1040px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;gap:2rem;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.tbar-in::-webkit-scrollbar{display:none}
+.tbar-in .tlbl{position:sticky;left:0;background:var(--n);padding-right:.5rem}
+.tlbl{font-size:10px;font-weight:500;color:var(--mu)!important;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+.tlog{font-size:12px;font-weight:500;color:rgba(255,255,255,0.28)!important}
+.foot{padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--mu)!important;max-width:1040px;margin:0 auto;flex-wrap:wrap;gap:.75rem;border-top:0.5px solid var(--br)}
+.flinks{display:flex;gap:1.25rem}
+.flinks a{color:var(--mu)!important;cursor:pointer}
+.flinks a:hover{color:#fff!important}
+.tag{font-size:10px;padding:2px 6px;background:rgba(255,255,255,0.05);border-radius:3px;color:rgba(255,255,255,0.45)!important}
+.ctag{background:rgba(0,198,162,0.08);color:var(--cy)!important}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:.55rem}
+.card{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1rem;transition:border-color .15s;color:#fff}
+.card:hover{border-color:rgba(0,198,162,0.28)}
+.card h3,.agent-c h3,.uc-c h3,.ro-c h3,.flow-c h3,.cs-name,.cs-bc h3{color:#fff!important}
+.card p,.agent-c p,.uc-c p,.ro-c p,.flow-c p{color:var(--mu)!important}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}
+.ic{width:34px;height:34px;background:rgba(0,198,162,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--cy)!important;margin-bottom:.75rem}
+
+/* ---------- hero ---------- */
+.hero-g{display:grid;grid-template-columns:1fr 360px;gap:3rem;align-items:start;padding:3.5rem 2rem 2.5rem;max-width:1040px;margin:0 auto}
+.h1{font-size:clamp(26px,3.5vw,46px);font-weight:500;line-height:1.12;letter-spacing:-1px;margin-bottom:1rem;color:#fff!important}
+.h1 em{color:var(--cy)!important;font-style:normal}
+.hacts{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:1.75rem}
+.hstats{display:flex;gap:1.75rem;padding-top:1.25rem;border-top:0.5px solid var(--br)}
+.hstat .n{font-size:20px;font-weight:500;color:#fff!important}
+.hstat .l{font-size:10px;color:var(--mu)!important;margin-top:1px}
+.hcard{background:var(--nd);border:0.5px solid var(--br);border-radius:11px;padding:1.2rem;color:#fff}
+.hcard-lbl{font-size:10px;font-weight:500;color:var(--cy)!important;letter-spacing:1px;text-transform:uppercase;margin-bottom:.8rem}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.ppill{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.09);border-radius:6px;padding:6px 7px;text-align:center;font-size:11px;font-weight:500;color:rgba(255,255,255,0.6)!important}
+.ppill:hover{background:rgba(0,198,162,0.1);border-color:rgba(0,198,162,0.3);color:var(--cy)!important}
+.hcdiv{border:none;border-top:0.5px solid var(--br);margin:.85rem 0}
+
+/* ---------- services anchor nav ---------- */
+.svc-anav{background:var(--nc);border-bottom:0.5px solid var(--br);padding:0 2rem;position:sticky;top:58px;z-index:40}
+.svc-anav-in{max-width:1040px;margin:0 auto;display:flex;gap:0;overflow-x:auto}
+.stab{font-size:12px;font-weight:500;color:var(--mu)!important;padding:.75rem 1.1rem;border-bottom:2px solid transparent;white-space:nowrap;background:transparent!important;border-top:none;border-left:none;border-right:none;transition:color .15s,border-color .15s;text-decoration:none}
+.stab:hover{color:#fff!important}
+.stab.active{color:var(--cy)!important;border-bottom-color:var(--cy)}
+.svc-section{padding:2.5rem 2rem;max-width:1040px;margin:0 auto;scroll-margin-top:115px}
+.svc-header{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin-bottom:2rem}
+.check-list{display:flex;flex-direction:column;gap:.4rem}
+.chk-item{font-size:12px;color:rgba(255,255,255,0.72)!important;display:flex;align-items:center;gap:.55rem}
+.chk{width:15px;height:15px;min-width:15px;background:rgba(0,198,162,0.12);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--cy)!important}
+
+/* ---------- agent cards ---------- */
+.agents-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.agent-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1.1rem;transition:border-color .15s;color:#fff}
+.agent-c:hover{border-color:rgba(0,198,162,0.3)}
+.agent-ic{width:36px;height:36px;background:rgba(0,198,162,0.1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--cy)!important;margin-bottom:.7rem}
+.agent-num{font-size:10px;font-weight:500;color:var(--cy)!important;letter-spacing:1px;text-transform:uppercase;margin-bottom:.35rem}
+
+/* ---------- flow ---------- */
+.flow-g{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:1.75rem;position:relative}
+.flow-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1rem;text-align:center;position:relative;color:#fff}
+.flow-c:not(:last-child):after{content:'\2192';position:absolute;right:-.6rem;top:50%;transform:translateY(-50%);font-size:14px;color:var(--cy)!important;z-index:1}
+.flow-n{font-size:22px;font-weight:500;color:var(--cy)!important;margin-bottom:.3rem}
+
+/* ---------- use cases ---------- */
+.uc-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1.75rem}
+.uc-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1rem;color:#fff}
+.uc-c:hover{border-color:rgba(0,198,162,0.25)}
+.uc-sector{font-size:10px;font-weight:500;color:var(--cy)!important;letter-spacing:1px;text-transform:uppercase;margin-bottom:.45rem}
+
+/* ---------- revops ---------- */
+.ro-g{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:1.75rem}
+.ro-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1rem;color:#fff}
+.ro-n{font-size:22px;font-weight:500;color:var(--cy)!important;margin-bottom:.3rem}
+
+/* ---------- platforms ---------- */
+.plat-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:.75rem}
+.plat-c{background:rgba(255,255,255,0.03);border:0.5px solid var(--br);border-radius:9px;padding:1rem;transition:border-color .15s;color:#fff}
+.plat-c:hover{border-color:rgba(0,198,162,0.25)}
+.plat-d{width:6px;height:6px;border-radius:50%;background:var(--cy);margin-bottom:.6rem}
+.plat-n{font-size:12px;font-weight:500;margin-bottom:2px;color:#fff!important}
+.plat-t{font-size:10px;color:var(--mu)!important;margin-bottom:.5rem}
+.plat-u{font-size:10px;color:rgba(255,255,255,0.35)!important;line-height:1.5}
+
+/* ---------- pricing ---------- */
+.price-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.price-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1.25rem;color:#fff}
+.price-c.feat{border-color:rgba(0,198,162,0.4);background:rgba(0,198,162,0.04)}
+.pbadge{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;background:rgba(0,198,162,0.15);color:var(--cy)!important;border-radius:4px;margin-bottom:.65rem}
+.ptier{font-size:14px;font-weight:500;margin-bottom:.3rem;color:#fff!important}
+.pamt{font-size:20px;font-weight:500;color:var(--cy)!important;margin-bottom:.15rem}
+.pamt span{font-size:11px;font-weight:400;color:var(--mu)!important}
+.pdesc{font-size:12px;color:var(--mu)!important;margin-bottom:.85rem;line-height:1.65}
+.pitems{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.85rem}
+.pi{font-size:11px;color:rgba(255,255,255,0.6)!important;display:flex;align-items:center;gap:.45rem}
+.pid{width:4px;height:4px;border-radius:50%;background:var(--cy);min-width:4px}
+.pnote{font-size:10px;color:var(--mu)!important;padding-top:.75rem;border-top:0.5px solid var(--br);line-height:1.55}
+
+/* ---------- tech stack ---------- */
+.stack-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:.75rem;margin-top:1.75rem}
+.stack-c{background:rgba(255,255,255,0.03);border:0.5px solid var(--br);border-radius:9px;padding:1rem;transition:border-color .15s;color:#fff}
+.stack-c:hover{border-color:rgba(0,198,162,0.2)}
+.stack-lbl{font-size:10px;font-weight:500;color:var(--cy)!important;letter-spacing:1px;text-transform:uppercase;margin-bottom:.65rem}
+.stool{font-size:12px;color:rgba(255,255,255,0.65)!important;display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem}
+.st-dot{width:4px;height:4px;border-radius:50%;background:rgba(0,198,162,0.5);min-width:4px}
+
+/* ---------- testimonials ---------- */
+.proof-g{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.proof-c{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1.2rem;color:#fff}
+.pq{font-size:13px;color:rgba(255,255,255,0.7)!important;line-height:1.75;margin-bottom:.75rem;font-style:italic}
+.pc{font-size:11px;color:var(--mu)!important}
+.pc span{color:var(--cy)!important}
+
+/* ---------- case studies ---------- */
+.cs-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:.85rem;margin-top:1.75rem}
+.cs-c{background:var(--cb);border:0.5px solid var(--br);border-radius:10px;overflow:hidden;cursor:pointer;transition:border-color .15s;color:#fff}
+.cs-c:hover{border-color:rgba(0,198,162,0.35)}
+.cs-top{padding:1.2rem;border-bottom:0.5px solid var(--br)}
+.cs-br{display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem}
+.cs-init{width:36px;height:36px;border-radius:8px;background:rgba(0,198,162,0.12);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--cy)!important}
+.cs-name{font-size:14px;font-weight:500;margin-bottom:2px}
+.cs-sector{font-size:11px;color:var(--mu)!important;margin-bottom:.75rem}
+.cs-brief{font-size:12px;color:rgba(255,255,255,0.6)!important;line-height:1.65}
+.cs-bot{padding:1rem 1.2rem;display:flex;gap:1rem}
+.cs-s{text-align:center;flex:1}
+.cs-s .n{font-size:16px;font-weight:500;color:var(--cy)!important}
+.cs-s .l{font-size:10px;color:var(--mu)!important;margin-top:1px}
+.cs-dw{display:none;padding:2.5rem 2rem;max-width:1040px;margin:0 auto}
+.cs-dw.show{display:block}
+.cs-back{font-size:12px;color:var(--cy)!important;cursor:pointer;display:flex;align-items:center;gap:.35rem;margin-bottom:1.5rem}
+.cs-dh{display:grid;grid-template-columns:1fr 265px;gap:2rem;margin-bottom:1.75rem}
+.cs-dh h1{font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-.4px;margin-bottom:.75rem;color:#fff!important}
+.cs-dh p{font-size:13px;color:var(--mu)!important;line-height:1.85;margin-bottom:.75rem}
+.cs-sb{background:var(--nd);border:0.5px solid var(--br);border-radius:10px;padding:1.1rem;color:#fff}
+.cs-mr{display:flex;justify-content:space-between;padding:.45rem 0;border-bottom:0.5px solid var(--br)}
+.cs-mr:last-child{border-bottom:none}
+.cs-ml{font-size:11px;color:var(--mu)!important}
+.cs-mv{font-size:11px;font-weight:500;color:var(--cy)!important}
+.cs-sr{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.5rem}
+.cs-sc{background:var(--cb);border:0.5px solid var(--br);border-radius:8px;padding:.8rem;text-align:center;color:#fff}
+.cs-sc .n{font-size:19px;font-weight:500;color:var(--cy)!important;margin-bottom:2px}
+.cs-sc .l{font-size:10px;color:var(--mu)!important;line-height:1.4}
+.cs-bg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin-bottom:1.5rem}
+.cs-bc{background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:1rem;color:#fff}
+.cs-bc h3{font-size:11px;font-weight:500;margin-bottom:.45rem;color:var(--cy)!important}
+.cs-bc ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.cs-bc li{font-size:12px;color:var(--mu)!important;line-height:1.55;display:flex;align-items:flex-start;gap:.4rem}
+.cs-bc li:before{content:'';width:4px;height:4px;border-radius:50%;background:var(--cy);min-width:4px;margin-top:6px}
+.cs-qt{background:rgba(0,198,162,0.06);border:0.5px solid rgba(0,198,162,0.18);border-radius:9px;padding:1.2rem;margin-bottom:1.5rem;color:#fff}
+.cs-qt p{font-size:13px;color:rgba(255,255,255,0.75)!important;font-style:italic;line-height:1.75;margin-bottom:.5rem}
+.cs-qt cite{font-size:11px;color:var(--mu)!important}
+
+/* ---------- about ---------- */
+.about-g{display:grid;grid-template-columns:1fr 310px;gap:2.5rem;align-items:start}
+.fc{background:var(--cb);border:0.5px solid var(--br);border-radius:10px;padding:1.25rem;color:#fff}
+.fav{width:52px;height:52px;border-radius:50%;background:rgba(0,198,162,0.15);border:0.5px solid rgba(0,198,162,0.3);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;color:var(--cy)!important;margin-bottom:.9rem}
+.fsg{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.85rem}
+.fs{background:rgba(0,198,162,0.06);border:0.5px solid rgba(0,198,162,0.12);border-radius:7px;padding:.55rem .65rem;text-align:center;color:#fff}
+.fs .n{font-size:16px;font-weight:500;color:var(--cy)!important}
+.fs .l{font-size:10px;color:var(--mu)!important;margin-top:1px;line-height:1.35}
+.n8n-box{background:rgba(0,198,162,0.06);border:0.5px solid rgba(0,198,162,0.2);border-radius:9px;padding:1.25rem;margin-top:1.25rem;color:#fff}
+.n8n-h{display:flex;align-items:center;gap:.65rem;margin-bottom:.75rem}
+.n8n-badge{font-size:10px;font-weight:500;padding:2px 8px;background:rgba(0,198,162,0.15);color:var(--cy)!important;border-radius:4px}
+.n8n-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem}
+.n8n-p{background:rgba(255,255,255,0.03);border:0.5px solid rgba(0,198,162,0.12);border-radius:7px;padding:.75rem;color:#fff}
+.n8n-p h4{font-size:11px;font-weight:500;color:var(--cy)!important;margin-bottom:2px}
+.n8n-p p{font-size:11px;color:var(--mu)!important;line-height:1.55}
+.val-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+
+/* ---------- contact ---------- */
+.contact-g{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1040px;margin:0 auto;padding:2.5rem 2rem}
+.cform{background:var(--nd);border:0.5px solid var(--br);border-radius:11px;padding:1.75rem;color:#fff}
+.cform h2{font-size:20px;font-weight:500;margin-bottom:.5rem;color:#fff!important}
+.cform p{font-size:12px;color:var(--mu)!important;margin-bottom:1.5rem;line-height:1.7}
+.fr{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.fr label{font-size:11px;font-weight:500;color:var(--mu)!important}
+.fr input,.fr select,.fr textarea{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.15);border-radius:6px;padding:9px 12px;font-size:12px;color:#fff!important;width:100%;outline:none;font-family:var(--font-sans)}
+.fr input:focus,.fr select:focus,.fr textarea:focus{border-color:var(--cy)}
+.fr select option{background:var(--n);color:#fff}
+.fr textarea{resize:vertical;min-height:90px}
+.fr input::placeholder,.fr textarea::placeholder{color:rgba(255,255,255,0.3)}
+.ci-item{display:flex;align-items:flex-start;gap:.65rem;background:var(--cb);border:0.5px solid var(--br);border-radius:9px;padding:.85rem 1rem;margin-bottom:.75rem;color:#fff}
+.ci-icon{width:30px;height:30px;min-width:30px;background:rgba(0,198,162,0.1);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--cy)!important}
+.ci-item h4{font-size:12px;font-weight:500;margin-bottom:2px;color:#fff!important}
+.ci-item p{font-size:11px;color:var(--mu)!important}
+.faq-l{display:flex;flex-direction:column}
+.faq-i{border-bottom:0.5px solid var(--br);padding:.9rem 0}
+.fq{font-size:13px;font-weight:500;margin-bottom:.3rem;color:#fff!important}
+.fa{font-size:12px;color:var(--mu)!important;line-height:1.65}
+.ci-form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.ci-in{background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.18);border-radius:6px;padding:9px 13px;font-size:12px;color:#fff!important;width:220px;outline:none}
+.ci-in::placeholder{color:rgba(255,255,255,0.3)}
+.ci-in:focus{border-color:var(--cy)}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 860px){
+  .hero-g{grid-template-columns:1fr;gap:1.5rem}
+  .g3,.g4,.agents-g,.uc-g,.ro-g,.price-g,.cs-bg,.cs-sr,.val-g{grid-template-columns:repeat(2,1fr)}
+  .svc-header,.about-g,.cs-dh,.contact-g{grid-template-columns:1fr}
+  .flow-g{grid-template-columns:repeat(2,1fr)}
+  .flow-c:not(:last-child):after{display:none}
+  .nl{display:none}
+}
+@media (max-width: 540px){
+  .g3,.g4,.agents-g,.uc-g,.ro-g,.price-g,.cs-bg,.cs-sr,.val-g,.flow-g,.pgrid{grid-template-columns:1fr}
+  .hero-g,.sec,.svc-section,.band,.contact-g{padding-left:1.25rem;padding-right:1.25rem}
+  .nav{padding:0 1.25rem}
+}
+
+</style>
+
+<style id="mobile-nav-fix">
+/* --- Hamburger button --- */
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;width:38px;height:38px;flex-direction:column;justify-content:center;gap:5px;z-index:1001}
+.nav-toggle span{display:block;height:2px;width:22px;background:#fff;border-radius:2px;transition:transform .25s ease,opacity .25s ease}
+.nav-toggle.open span{background:#fff}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999}
+.nav-backdrop.show{display:block}
+@media (max-width: 860px){
+  .nav{position:relative}
+  .nav-toggle{display:flex}
+  .nl{
+    display:flex !important;flex-direction:column;align-items:flex-start;gap:0;
+    position:fixed;top:0;right:0;height:100vh;width:min(80vw,300px);
+    background:#0B1628;box-shadow:-8px 0 30px rgba(0,0,0,.4);
+    padding:84px 26px 26px;z-index:1000;
+    transform:translateX(105%);transition:transform .3s ease;overflow-y:auto
+  }
+  .nl.open{transform:translateX(0)}
+  .nl a{width:100%;padding:15px 0;font-size:16px;color:#fff !important;border-bottom:.5px solid rgba(255,255,255,.1)}
+  .nl a.active{color:#00C6A2 !important}
+  .nav .nbtn{margin-left:auto;margin-right:12px}
+}
+@media (max-width: 540px){
+  .nav .nbtn{display:none}
+  .nl{width:84vw}
+}
+@media (max-width: 860px){
+  html,body{overflow-x:hidden;max-width:100%}
+  img{max-width:100%;height:auto}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="logo" href="index.html">Windex<span>Tech</span></a>
+  <div class="nl">
+    <a href="index.html" class="active">Home</a>
+    <a href="services.html">Services</a>
+    <a href="case-studies.html">Case studies</a>
+    <a href="contact.html">AI Readiness Audit</a>
+    <a href="contact.html">Contact</a>
+    <a href="about.html">About us</a>
+  </div>
+  <a class="nbtn" href="contact.html">Book a call</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero-g">
+  <div>
+    <p class="ey">CRM &amp; AI automation consultancy</p>
+    <h1 class="h1">Your CRM should<br><em>drive revenue</em>,<br>not store contacts</h1>
+    <p style="font-size:14px;color:var(--mu);max-width:440px;margin-bottom:1.5rem;line-height:1.8">WindexTech implements HubSpot, Salesforce, Pipedrive, and Zoho for businesses worldwide — then builds AI automation on top so your pipeline runs without manual effort.</p>
+    <div class="hacts">
+      <a class="bp" href="contact.html">Get an AI readiness audit</a>
+      <a class="bg" href="case-studies.html">See case studies &rarr;</a>
+    </div>
+    <div class="hstats">
+      <div class="hstat"><div class="n">20+</div><div class="l">Years expertise</div></div>
+      <div class="hstat"><div class="n">4</div><div class="l">CRM platforms</div></div>
+      <div class="hstat"><div class="n">50+</div><div class="l">Clients delivered</div></div>
+    </div>
+  </div>
+  <div class="hcard">
+    <p class="hcard-lbl">Platforms we implement</p>
+    <div class="pgrid">
+      <div class="ppill">HubSpot</div><div class="ppill">Salesforce</div><div class="ppill">Pipedrive</div>
+      <div class="ppill">Zoho CRM</div><div class="ppill">Make.com</div><div class="ppill">n8n</div>
+    </div>
+    <hr class="hcdiv">
+    <p style="font-size:11px;color:var(--mu);line-height:1.65;margin-bottom:.75rem">CRM and AI automation consultancy working with businesses across the UK, US, and Middle East. Platform-agnostic — we recommend what fits, not what pays us a referral.</p>
+    <a class="bp" style="width:100%;font-size:11px;padding:8px;text-align:center" href="contact.html">Book a free discovery call &#8599;</a>
+  </div>
+</div>
+
+<div class="tbar">
+  <div class="tbar-in">
+  <span class="tlbl">Trusted by</span>
+  <span class="tlog">Jibble</span><span class="tlog">Trint</span><span class="tlog">OP Agency</span>
+  <span class="tlog">KP Law</span><span class="tlog">Measure Protocol</span><span class="tlog">CREW Saudi Arabia</span>
+  <span class="tlog">Instinct Digital</span><span class="tlog">SMS Highway</span><span class="tlog">BBR</span>
+  </div>
+</div>
+<hr class="hdiv">
+
+<!-- WHAT WE DO -->
+<div class="sec">
+  <p class="ey">What we do</p>
+  <h2 class="h2">CRM, AI automation &amp; RevOps</h2>
+  <p class="sub" style="max-width:500px">We find the right CRM for your business, implement it properly, and build AI automation on top so your team spends time closing — not clicking.</p>
+  <div class="g3">
+    <div class="card">
+      <div class="ic" aria-hidden="true"><i class="ti ti-settings-2"></i></div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.35rem">CRM implementation</h3>
+      <p style="font-size:12px;line-height:1.6">Strategy to go-live. Configured to your actual sales process, not a vendor template.</p>
+      <div class="tags"><span class="tag ctag">HubSpot</span><span class="tag ctag">Salesforce</span><span class="tag ctag">Pipedrive</span><span class="tag ctag">Zoho</span></div>
+    </div>
+    <div class="card">
+      <div class="ic" aria-hidden="true"><i class="ti ti-robot"></i></div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.35rem">AI automation</h3>
+      <p style="font-size:12px;line-height:1.6">Six-agent systems scoring leads, classifying replies, qualifying inbound, and running outbound — connected to your CRM.</p>
+      <div class="tags"><span class="tag ctag">Claude API</span><span class="tag ctag">Make.com</span><span class="tag ctag">n8n</span></div>
+    </div>
+    <div class="card">
+      <div class="ic" aria-hidden="true"><i class="ti ti-trending-up"></i></div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.35rem">RevOps strategy</h3>
+      <p style="font-size:12px;line-height:1.6">Align sales and marketing around one data model. Attribution, pipeline hygiene, and forecasting that works.</p>
+      <div class="tags"><span class="tag ctag">GTM design</span><span class="tag ctag">Attribution</span></div>
+    </div>
+    <div class="card">
+      <div class="ic" aria-hidden="true"><i class="ti ti-plug-connected"></i></div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.35rem">System integrations</h3>
+      <p style="font-size:12px;line-height:1.6">Connect your CRM to Stripe, DocuSign, Apollo, Slack, and your full stack.</p>
+      <div class="tags"><span class="tag ctag">REST APIs</span><span class="tag ctag">Zapier</span></div>
+    </div>
+    <div class="card">
+      <div class="ic" aria-hidden="true"><i class="ti ti-database"></i></div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.35rem">CRM migration</h3>
+      <p style="font-size:12px;line-height:1.6">Any platform switch — clean migration of records, fields, history, and integrations.</p>
+      <div class="tags"><span class="tag ctag">50k+ records</span><span class="tag ctag">Data mapping</span></div>
+    </div>
+    <div class="card">
+      <div class="ic" aria-hidden="true"><i class="ti ti-headset"></i></div>
+      <h3 style="font-size:13px;font-weight:500;margin-bottom:.35rem">Managed support</h3>
+      <p style="font-size:12px;line-height:1.6">Ongoing retainers for businesses that need a senior CRM expert on call.</p>
+      <div class="tags"><span class="tag ctag">Retainer</span><span class="tag ctag">Training</span></div>
+    </div>
+  </div>
+</div>
+<hr class="hdiv">
+
+<!-- TECH STACK -->
+<div class="sec">
+  <p class="ey">Technology stack</p>
+  <h2 class="h2">Tools we build with</h2>
+  <p class="sub" style="max-width:500px">Every tool below is used in active client engagements — not aspirational. We select the right combination per brief.</p>
+  <div class="stack-g">
+    <div class="stack-c"><div class="stack-lbl">CRM platforms</div><div class="stool"><div class="st-dot"></div>HubSpot</div><div class="stool"><div class="st-dot"></div>Salesforce</div><div class="stool"><div class="st-dot"></div>Pipedrive</div><div class="stool"><div class="st-dot"></div>Zoho CRM</div></div>
+    <div class="stack-c"><div class="stack-lbl">AI &amp; automation</div><div class="stool"><div class="st-dot"></div>Claude API</div><div class="stool"><div class="st-dot"></div>Make.com</div><div class="stool"><div class="st-dot"></div>n8n</div><div class="stool"><div class="st-dot"></div>Zapier</div></div>
+    <div class="stack-c"><div class="stack-lbl">Prospecting &amp; data</div><div class="stool"><div class="st-dot"></div>Apollo.io</div><div class="stool"><div class="st-dot"></div>Clay</div><div class="stool"><div class="st-dot"></div>Hunter.io</div><div class="stool"><div class="st-dot"></div>Instantly</div></div>
+    <div class="stack-c"><div class="stack-lbl">Outbound sequencing</div><div class="stool"><div class="st-dot"></div>Smartlead</div><div class="stool"><div class="st-dot"></div>HeyReach</div><div class="stool"><div class="st-dot"></div>HubSpot sequences</div><div class="stool"><div class="st-dot"></div>Lemlist</div></div>
+    <div class="stack-c"><div class="stack-lbl">Billing &amp; documents</div><div class="stool"><div class="st-dot"></div>Stripe</div><div class="stool"><div class="st-dot"></div>DocuSign</div><div class="stool"><div class="st-dot"></div>PandaDoc</div><div class="stool"><div class="st-dot"></div>Odoo e-invoicing</div></div>
+    <div class="stack-c"><div class="stack-lbl">Development</div><div class="stool"><div class="st-dot"></div>Salesforce Apex</div><div class="stool"><div class="st-dot"></div>REST / webhook APIs</div><div class="stool"><div class="st-dot"></div>Next.js / React</div><div class="stool"><div class="st-dot"></div>Supabase</div></div>
+  </div>
+</div>
+<hr class="hdiv">
+
+<!-- WHY WINDEXTECH -->
+<div class="sec">
+  <p class="ey">Why WindexTech</p>
+  <div class="g3">
+    <div class="card"><div style="font-size:24px;font-weight:500;color:var(--cy);margin-bottom:.35rem">01</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Platform-agnostic advice</h3><p style="font-size:12px;line-height:1.6">No vendor fees. We recommend the right CRM for your business.</p></div>
+    <div class="card"><div style="font-size:24px;font-weight:500;color:var(--cy);margin-bottom:.35rem">02</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Strategy before build</h3><p style="font-size:12px;line-height:1.6">Written strategy document before build starts. No scope surprises.</p></div>
+    <div class="card"><div style="font-size:24px;font-weight:500;color:var(--cy);margin-bottom:.35rem">03</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">AI automation built in</h3><p style="font-size:12px;line-height:1.6">Every CRM build includes automation thinking from day one.</p></div>
+    <div class="card"><div style="font-size:24px;font-weight:500;color:var(--cy);margin-bottom:.35rem">04</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Senior expertise, honest pricing</h3><p style="font-size:12px;line-height:1.6">20+ years of CRM expertise. Scoped honestly — you pay for what you need.</p></div>
+    <div class="card"><div style="font-size:24px;font-weight:500;color:var(--cy);margin-bottom:.35rem">05</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Complex integrations</h3><p style="font-size:12px;line-height:1.6">CPQ, payment gateways, e-signature, ATS — we build the integrations others avoid.</p></div>
+    <div class="card"><div style="font-size:24px;font-weight:500;color:var(--cy);margin-bottom:.35rem">06</div><h3 style="font-size:13px;font-weight:500;margin-bottom:.3rem">Built for adoption</h3><p style="font-size:12px;line-height:1.6">Recorded training and documentation so your team stays self-sufficient.</p></div>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div class="band"><div class="band-in">
+  <p class="ey">Results</p>
+  <div class="g4">
+    <div style="text-align:center;padding:1.1rem .75rem;background:rgba(255,255,255,0.03);border:0.5px solid var(--br);border-radius:9px"><div style="font-size:26px;font-weight:500;color:var(--cy);margin-bottom:3px">3&ndash;4x</div><div style="font-size:11px;color:var(--mu);line-height:1.5">Faster lead response with AI</div></div>
+    <div style="text-align:center;padding:1.1rem .75rem;background:rgba(255,255,255,0.03);border:0.5px solid var(--br);border-radius:9px"><div style="font-size:26px;font-weight:500;color:var(--cy);margin-bottom:3px">50k+</div><div style="font-size:11px;color:var(--mu);line-height:1.5">Records migrated across platforms</div></div>
+    <div style="text-align:center;padding:1.1rem .75rem;background:rgba(255,255,255,0.03);border:0.5px solid var(--br);border-radius:9px"><div style="font-size:26px;font-weight:500;color:var(--cy);margin-bottom:3px">40%</div><div style="font-size:11px;color:var(--mu);line-height:1.5">Reduction in manual CRM admin</div></div>
+    <div style="text-align:center;padding:1.1rem .75rem;background:rgba(255,255,255,0.03);border:0.5px solid var(--br);border-radius:9px"><div style="font-size:26px;font-weight:500;color:var(--cy);margin-bottom:3px">50+</div><div style="font-size:11px;color:var(--mu);line-height:1.5">Clients across UK, US &amp; Middle East</div></div>
+  </div>
+</div></div>
+
+<!-- TESTIMONIALS -->
+<div class="sec">
+  <p class="ey">Testimonials</p>
+  <h2 class="h2">What clients say</h2>
+  <div class="proof-g">
+    <div class="proof-c"><p class="pq">&ldquo;WindexTech took a HubSpot setup held together with string and turned it into something we could actually build the business on.&rdquo;</p><p class="pc"><span>Jibble</span> &mdash; Head of Revenue</p></div>
+    <div class="proof-c"><p class="pq">&ldquo;50,000 records, full history, all integrations live in 8 weeks. Clean handover.&rdquo;</p><p class="pc"><span>Trint</span> &mdash; Head of Sales</p></div>
+    <div class="proof-c"><p class="pq">&ldquo;The Make.com automation layer removed all the manual work &mdash; leads qualify and route themselves now.&rdquo;</p><p class="pc"><span>Measure Protocol</span> &mdash; Head of Growth</p></div>
+    <div class="proof-c"><p class="pq">&ldquo;Kauser understood our legal workflow immediately and built something we actually use every day.&rdquo;</p><p class="pc"><span>KP Law</span> &mdash; Operations Director</p></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="band" style="text-align:center"><div class="band-in">
+  <p class="ey" style="text-align:center">Get started</p>
+  <h2 class="h2" style="text-align:center;margin-bottom:.5rem">Not sure where to start?<br>Get your free AI readiness report.</h2>
+  <p style="font-size:13px;color:var(--mu);max-width:420px;margin:0 auto 1.5rem;line-height:1.7">Run a free scan of your HubSpot portal across 10 dimensions &mdash; your composite score, every finding, and a 30/60/90 day plan. No card required.</p>
+  <div class="ci-form">
+    <input class="ci-in" type="email" placeholder="Your work email">
+    <a class="bp" href="contact.html">Get my free report &#8599;</a>
+  </div>
+</div></div>
+
+<!-- FOOTER -->
+<div style="border-top:0.5px solid var(--br)"><div class="foot">
+  <div>
+    <div class="logo">Windex<span style="color:var(--cy)">Tech</span></div>
+    <div style="font-size:10px;color:var(--mu);margin-top:2px">CRM &amp; AI automation &middot; windextech.co.uk</div>
+  </div>
+  <div class="flinks">
+    <a href="services.html">Services</a>
+    <a href="case-studies.html">Case studies</a>
+    <a href="contact.html">Contact</a>
+    <a href="about.html">About us</a>
+  </div>
+  <div style="font-size:10px;color:var(--mu)">&copy; 2026 WindexTech Ltd</div>
+</div></div>
+
+
+<script id="mobile-nav-js">
+(function(){
+  var nav=document.querySelector('.nav');if(!nav)return;
+  var links=nav.querySelector('.nl');if(!links)return;
+  // build hamburger
+  var btn=document.createElement('button');
+  btn.className='nav-toggle';btn.setAttribute('aria-label','Menu');btn.setAttribute('aria-expanded','false');
+  btn.innerHTML='<span></span><span></span><span></span>';
+  // backdrop
+  var bd=document.createElement('div');bd.className='nav-backdrop';
+  document.body.appendChild(bd);
+  // insert button as last child of nav so it sits at the right
+  nav.appendChild(btn);
+  function close(){links.classList.remove('open');btn.classList.remove('open');bd.classList.remove('show');btn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  function open(){links.classList.add('open');btn.classList.add('open');bd.classList.add('show');btn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  btn.addEventListener('click',function(){links.classList.contains('open')?close():open();});
+  bd.addEventListener('click',close);
+  links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+  window.addEventListener('resize',function(){if(window.innerWidth>860)close();});
+})();
+</script>
+</body>
+</html>
