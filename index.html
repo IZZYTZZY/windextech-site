@@ -268,15 +268,13 @@ button{appearance:none;-webkit-appearance:none;-moz-appearance:none;font-family:
 </style>
 
 <style id="mobile-nav-fix">
-/* --- Hamburger button --- */
-.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;width:38px;height:38px;flex-direction:column;justify-content:center;gap:5px;z-index:1001}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;width:38px;height:38px;flex-direction:column;justify-content:center;gap:5px;z-index:1002}
 .nav-toggle span{display:block;height:2px;width:22px;background:#fff;border-radius:2px;transition:transform .25s ease,opacity .25s ease}
-.nav-toggle.open span{background:#fff}
 .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-toggle.open span:nth-child(2){opacity:0}
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.nav-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.25);z-index:900}
-.nav-backdrop.show{display:block}
+.nav-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.25);z-index:900;pointer-events:none}
+.nav-backdrop.show{display:block;pointer-events:auto}
 @media (max-width: 860px){
   .nav{position:relative;z-index:1001}
   .nav-toggle{display:flex}
@@ -284,11 +282,12 @@ button{appearance:none;-webkit-appearance:none;-moz-appearance:none;font-family:
     display:flex !important;flex-direction:column;align-items:flex-start;gap:0;
     position:fixed;top:0;right:0;height:100vh;width:min(80vw,300px);
     background:#0B1628;box-shadow:-8px 0 30px rgba(0,0,0,.4);
-    padding:84px 26px 26px;z-index:1000;
-    transform:translateX(105%);transition:transform .3s ease;overflow-y:auto
+    padding:84px 26px 26px;z-index:1001;
+    transform:translateX(105%);transition:transform .3s ease;overflow-y:auto;
+    pointer-events:none
   }
-  .nl.open{transform:translateX(0)}
-  .nl a{width:100%;padding:15px 0;font-size:16px;color:#fff !important;border-bottom:.5px solid rgba(255,255,255,.1)}
+  .nl.open{transform:translateX(0);pointer-events:auto}
+  .nl a{display:block;width:100%;padding:15px 0;font-size:16px;color:#fff !important;border-bottom:.5px solid rgba(255,255,255,.1)}
   .nl a.active{color:#00C6A2 !important}
   .nav .nbtn{margin-left:auto;margin-right:12px}
 }
@@ -340,8 +339,7 @@ button{appearance:none;-webkit-appearance:none;-moz-appearance:none;font-family:
       <div class="ppill">Zoho CRM</div><div class="ppill">Make.com</div><div class="ppill">n8n</div>
     </div>
     <hr class="hcdiv">
-    <p style="font-size:11px;color:var(--mu);line-height:1.65;margin-bottom:.75rem">CRM and AI automation consultancy working with businesses across the UK, US, and Middle East. Platform-agnostic — we recommend what fits, not what pays us a referral.</p>
-    <a class="bp" style="width:100%;font-size:11px;padding:8px;text-align:center" href="contact.html">Book a free discovery call &#8599;</a>
+    <p style="font-size:11px;color:var(--mu);line-height:1.65;margin-bottom:0">CRM and AI automation consultancy working with businesses across the UK, US, and Middle East. Platform-agnostic — we recommend what fits, not what pays us a referral.</p>
   </div>
 </div>
 
